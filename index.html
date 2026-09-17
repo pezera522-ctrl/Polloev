@@ -1,0 +1,1208 @@
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<meta
+    name="theme-color"
+    content="#030304"
+>
+
+<meta
+    name="color-scheme"
+    content="dark"
+>
+
+<title>La Rucaleta</title>
+
+<link
+    rel="stylesheet"
+    href="style.css?v=30"
+>
+<!-- =====================================================
+     FONDO GENERAL
+====================================================== -->
+
+<div
+    id="fondo-app"
+    class="fondo-app"
+    aria-hidden="true"
+>
+
+    <div class="fondo-resplandor"></div>
+
+    <div class="fondo-vineta"></div>
+
+    <div class="fondo-particulas"></div>
+
+    <div class="fondo-lineas"></div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CAPA GLOBAL DE EFECTOS
+====================================================== -->
+
+<div
+    id="capa-efectos"
+    class="capa-efectos"
+    aria-hidden="true"
+></div>
+
+
+
+<!-- =====================================================
+     TRANSICION GLOBAL
+====================================================== -->
+
+<div
+    id="overlay-transicion"
+    class="overlay-transicion"
+    aria-hidden="true"
+>
+
+    <div class="transicion-resplandor"></div>
+
+</div>
+
+
+
+<!-- =====================================================
+     TRANSICION DE RULETA
+     APARECE AL PULSAR INICIAR
+====================================================== -->
+
+<div
+    id="transicion-ruleta"
+    class="transicion-ruleta"
+    aria-hidden="true"
+    hidden
+>
+
+    <div class="ruleta-aura"></div>
+
+
+    <div
+        id="ruleta-animada"
+        class="ruleta-animada"
+    >
+
+        <div class="ruleta-anillo-exterior"></div>
+
+
+        <div class="ruleta-casillas">
+
+            <span class="casilla-ruleta casilla-r1">0</span>
+
+            <span class="casilla-ruleta casilla-r2">32</span>
+
+            <span class="casilla-ruleta casilla-r3">15</span>
+
+            <span class="casilla-ruleta casilla-r4">19</span>
+
+            <span class="casilla-ruleta casilla-r5">4</span>
+
+            <span class="casilla-ruleta casilla-r6">21</span>
+
+            <span class="casilla-ruleta casilla-r7">2</span>
+
+            <span class="casilla-ruleta casilla-r8">25</span>
+
+            <span class="casilla-ruleta casilla-r9">17</span>
+
+            <span class="casilla-ruleta casilla-r10">34</span>
+
+            <span class="casilla-ruleta casilla-r11">6</span>
+
+            <span class="casilla-ruleta casilla-r12">27</span>
+
+        </div>
+
+
+        <div class="ruleta-centro">
+
+            <div class="ruleta-centro-luz"></div>
+
+            <div class="ruleta-centro-punto"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="ruleta-destello"></div>
+
+</div>
+
+
+
+<!-- =====================================================
+     PANTALLA 1
+     PORTADA
+====================================================== -->
+
+<main
+    id="pantalla-inicio"
+    class="pantalla pantalla-inicio"
+>
+
+    <div class="inicio-contenido">
+
+
+        <div
+            id="contenedor-logo"
+            class="contenedor-logo"
+        >
+
+            <div
+                class="halo-logo"
+                aria-hidden="true"
+            ></div>
+
+            <div
+                class="anillo-logo"
+                aria-hidden="true"
+            ></div>
+
+
+            <img
+                id="logo-principal"
+                class="logo-principal"
+                src="logo-rucaleta.PNG"
+                alt="La Rucaleta"
+                draggable="false"
+            >
+
+        </div>
+
+
+        <button
+            id="boton-iniciar"
+            class="boton-imagen boton-iniciar"
+            type="button"
+            aria-label="Iniciar"
+        >
+
+            <img
+                src="INICIAR.PNG"
+                alt="INICIAR"
+                draggable="false"
+            >
+
+        </button>
+
+
+        <div
+            class="inicio-indicador"
+            aria-hidden="true"
+        >
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     PANTALLA 2
+     LOGIN
+====================================================== -->
+
+<section
+    id="pantalla-login"
+    class="pantalla pantalla-login"
+    hidden
+>
+
+    <div class="login-contenido">
+
+
+        <div class="login-logo-contenedor">
+
+            <div
+                class="login-halo"
+                aria-hidden="true"
+            ></div>
+
+
+            <img
+                class="login-logo"
+                src="logo-rucaleta.PNG"
+                alt="La Rucaleta"
+                draggable="false"
+            >
+
+        </div>
+
+
+
+        <section
+            id="login-panel"
+            class="login-panel"
+        >
+
+            <div class="login-linea-superior"></div>
+
+
+            <header class="login-encabezado">
+
+                <span class="login-etiqueta">
+                    ACCESO PRIVADO
+                </span>
+
+
+                <h1 class="login-titulo">
+                    INICIAR SESION
+                </h1>
+
+
+                <p class="login-descripcion">
+                    INGRESA TUS DATOS DE ACCESO
+                </p>
+
+            </header>
+
+
+
+            <div class="login-campo">
+
+                <label for="login-usuario">
+                    USUARIO
+                </label>
+
+
+                <div class="login-input-contenedor">
+
+                    <span
+                        class="login-icono"
+                        aria-hidden="true"
+                    >
+                        
+                    </span>
+
+
+                    <input
+                        id="login-usuario"
+                        class="login-input"
+                        type="text"
+                        autocomplete="username"
+                        spellcheck="false"
+                        placeholder="USUARIO"
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <div class="login-campo">
+
+                <label for="login-clave">
+                    CLAVE
+                </label>
+
+
+                <div class="login-input-contenedor">
+
+                    <span
+                        class="login-icono"
+                        aria-hidden="true"
+                    >
+                        *
+                    </span>
+
+
+                    <input
+                        id="login-clave"
+                        class="login-input"
+                        type="password"
+                        autocomplete="current-password"
+                        placeholder="CLAVE"
+                    >
+
+
+                    <button
+                        id="boton-ver-clave"
+                        class="boton-ver-clave"
+                        type="button"
+                        aria-label="Mostrar clave"
+                    >
+                        VER
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <button
+                id="boton-login"
+                class="boton-login"
+                type="button"
+            >
+
+                <span class="boton-login-texto">
+                    ENTRAR
+                </span>
+
+                <span
+                    class="boton-login-brillo"
+                    aria-hidden="true"
+                ></span>
+
+            </button>
+
+
+
+            <p
+                id="mensaje-login"
+                class="mensaje-login"
+                aria-live="polite"
+            >
+                ACCESO REQUERIDO
+            </p>
+
+
+            <div
+                id="login-carga"
+                class="login-carga"
+                aria-hidden="true"
+            >
+
+                <span></span>
+
+                <span></span>
+
+                <span></span>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PANTALLA 3
+     INSTRUCCIONES
+====================================================== -->
+
+<section
+    id="pantalla-instrucciones"
+    class="pantalla pantalla-instrucciones"
+    hidden
+>
+
+    <div class="instrucciones-contenido">
+
+
+        <header class="instrucciones-cabecera">
+
+            <span class="instrucciones-etiqueta">
+ANTES DE COMENZAR
+            </span>
+
+
+            <h1 class="instrucciones-titulo">
+                COMO USAR LA RUCALETA
+            </h1>
+
+
+            <p class="instrucciones-subtitulo">
+                RAPIDO, SIMPLE Y EN 3 PASOS
+            </p>
+
+        </header>
+
+
+
+        <!-- PASO 1 -->
+
+        <article class="tarjeta-instruccion">
+
+            <div class="numero-paso">
+                01
+            </div>
+
+
+            <div class="instruccion-texto">
+
+                <h2>
+                    AGREGA LOS RESULTADOS
+                </h2>
+
+                <p>
+                    COLOCA CADA NUMERO QUE SALGA EN LA RULETA.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PASO 2 -->
+
+        <article class="tarjeta-instruccion">
+
+            <div class="numero-paso">
+                02
+            </div>
+
+
+            <div class="instruccion-texto">
+
+                <h2>
+                    ESPERA UNA SENAL
+                </h2>
+
+                <p>
+                    LA APP ANALIZA LOS RESULTADOS Y TE AVISA CUANDO DETECTA UNA CONDICION.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PASO 3 -->
+
+        <article class="tarjeta-instruccion">
+
+            <div class="numero-paso">
+                03
+            </div>
+
+
+            <div class="instruccion-texto">
+
+                <h2>
+                    SIGUE LA SECUENCIA
+                </h2>
+
+                <p>
+                    SI CONFIRMAS UNA ENTRADA, LA APP DA SEGUIMIENTO HASTA UN MAXIMO DE 3 INTENTOS.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- MODULOS -->
+
+        <section class="bloque-modulos">
+
+            <div class="bloque-modulos-titulo">
+                MODULOS DE ANALISIS
+            </div>
+
+
+            <div class="modulos-grid">
+
+
+                <div class="modulo-item">
+
+                    <span class="modulo-nombre">
+                        COLOR
+                    </span>
+
+                    <strong>
+                        ROJO / NEGRO
+                    </strong>
+
+                </div>
+
+
+                <div class="modulo-item">
+
+                    <span class="modulo-nombre">
+                        PARIDAD
+                    </span>
+
+                    <strong>
+                        PAR / IMPAR
+                    </strong>
+
+                </div>
+
+
+                <div class="modulo-item">
+
+                    <span class="modulo-nombre">
+                        MITADES
+                    </span>
+
+                    <strong>
+                        1-18 / 19-36
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- IMPORTANTE -->
+
+        <section class="aviso-importante">
+
+            <div
+                class="aviso-icono"
+                aria-hidden="true"
+            >
+                !
+            </div>
+
+
+            <div class="aviso-texto">
+
+                <strong>
+                    IMPORTANTE
+                </strong>
+
+                <p>
+                    LA RUCALETA MUESTRA ANALISIS Y SENALES. NO GARANTIZA GANANCIAS NI RESULTADOS.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ACEPTACION -->
+
+        <label
+            id="aceptacion-instrucciones"
+            class="aceptacion-instrucciones"
+        >
+
+            <input
+                id="check-instrucciones"
+                type="checkbox"
+            >
+
+
+            <span
+                class="check-personalizado"
+                aria-hidden="true"
+            >
+
+                <span class="check-marca">
+                    OK
+                </span>
+
+            </span>
+
+
+            <span class="aceptacion-texto">
+
+                HE LEIDO LAS INSTRUCCIONES Y ACEPTO EL AVISO DE USO.
+
+            </span>
+
+        </label>
+
+
+
+        <p class="aviso-responsabilidad">
+
+            EL USO DE LA APP, LAS DECISIONES DE JUEGO Y EL MANEJO DEL DINERO SON RESPONSABILIDAD DEL USUARIO.
+
+        </p>
+
+
+
+        <button
+            id="boton-continuar-instrucciones"
+class="boton-continuar-instrucciones"
+            type="button"
+            disabled
+        >
+
+            <span>
+                CONTINUAR
+            </span>
+
+            <span
+                class="continuar-flecha"
+                aria-hidden="true"
+            >
+                &gt;
+            </span>
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PANTALLA 4
+     ULTIMOS 10 NUMEROS
+====================================================== -->
+
+<section
+    id="pantalla-sesion"
+    class="pantalla pantalla-sesion"
+    hidden
+>
+
+    <div class="sesion-contenido">
+
+
+        <div
+            id="titulo-sesion"
+            class="titulo-sesion"
+        >
+
+            <img
+                src="numeros .PNG"
+                alt="COLOCA LOS ULTIMOS 10 NUMEROS"
+                draggable="false"
+            >
+
+        </div>
+
+
+
+        <div
+            id="progreso-inicial"
+            class="progreso-inicial"
+        >
+
+            <span class="progreso-etiqueta">
+                NUMEROS
+            </span>
+
+
+            <strong id="contador-inicial">
+                0/10
+            </strong>
+
+        </div>
+
+
+
+        <div
+            id="historial-numeros"
+            class="historial-numeros"
+        >
+
+            <button
+                class="casilla-historial"
+                type="button"
+                data-posicion="0"
+                aria-label="Numero 1"
+            ></button>
+
+            <button
+                class="casilla-historial"
+                type="button"
+                data-posicion="1"
+                aria-label="Numero 2"
+            ></button>
+
+            <button
+                class="casilla-historial"
+                type="button"
+                data-posicion="2"
+                aria-label="Numero 3"
+            ></button>
+
+            <button
+                class="casilla-historial"
+                type="button"
+                data-posicion="3"
+                aria-label="Numero 4"
+            ></button>
+
+            <button
+                class="casilla-historial"
+                type="button"
+                data-posicion="4"
+                aria-label="Numero 5"
+            ></button>
+
+            <button
+                class="casilla-historial"
+                type="button"
+                data-posicion="5"
+                aria-label="Numero 6"
+            ></button>
+
+            <button
+                class="casilla-historial"
+                type="button"
+                data-posicion="6"
+                aria-label="Numero 7"
+            ></button>
+
+            <button
+                class="casilla-historial"
+                type="button"
+                data-posicion="7"
+                aria-label="Numero 8"
+            ></button>
+
+            <button
+                class="casilla-historial"
+                type="button"
+                data-posicion="8"
+                aria-label="Numero 9"
+            ></button>
+
+            <button
+                class="casilla-historial"
+                type="button"
+                data-posicion="9"
+                aria-label="Numero 10"
+            ></button>
+
+        </div>
+
+
+
+        <div
+            id="control-numero"
+            class="control-numero"
+        >
+
+            <input
+                id="numero-ruleta"
+                class="entrada-numero"
+                type="text"
+                inputmode="numeric"
+                maxlength="2"
+                autocomplete="off"
+                placeholder="00"
+                aria-label="Numero de ruleta"
+            >
+
+
+            <button
+                id="boton-agregar"
+                class="boton-imagen boton-agregar"
+                type="button"
+                aria-label="Agregar numero"
+            >
+
+                <img
+                    src="AGREGAR.PNG"
+                    alt="AGREGAR"
+                    draggable="false"
+                >
+
+            </button>
+
+        </div>
+
+
+
+        <p
+            id="mensaje-inicial"
+            class="mensaje-inicial"
+            aria-live="polite"
+        >
+            AGREGA EL PRIMER NUMERO
+        </p>
+
+
+
+        <div
+            id="contenedor-iniciar-sesion"
+            class="contenedor-iniciar-sesion"
+            hidden
+        >
+
+            <button
+                id="boton-iniciar-sesion"
+                class="boton-imagen boton-iniciar-sesion"
+                type="button"
+                aria-label="Iniciar sesion"
+            >
+
+                <img
+                    src="iniciar-sesión.PNG"
+                    alt="INICIAR SESION"
+                    draggable="false"
+                >
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PANTALLA 5
+     SESION ACTIVA
+====================================================== -->
+
+<section
+    id="pantalla-sesion-activa"
+    class="pantalla pantalla-sesion-activa"
+    hidden
+>
+
+    <div
+        id="contenido-sesion-activa"
+        class="contenido-sesion-activa"
+    >
+
+
+        <!-- CABECERA -->
+
+        <header class="cabecera-sesion">
+
+
+            <div
+                id="estado-superior"
+                class="estado-superior"
+            >
+                SESION ACTIVA
+            </div>
+
+
+
+            <div
+                id="contador-intentos"
+                class="contador-intentos intento-0"
+            >
+
+                <span class="contador-etiqueta">
+                    INTENTO
+                </span>
+
+                <strong id="numero-intento">
+                    0/3
+                </strong>
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- ESTADO -->
+
+        <section
+            id="panel-estado"
+            class="panel-estado estado-esperar"
+        >
+
+            <div
+                id="brillo-estado"
+                class="brillo-estado"
+                aria-hidden="true"
+            ></div>
+
+
+            <div class="panel-estado-contenido">
+
+
+                <span
+                    id="etiqueta-estado"
+                    class="etiqueta-estado"
+                >
+                    ESTADO ACTUAL
+                </span>
+
+
+                <h1 id="texto-estado">
+                    ESPERAR
+                </h1>
+
+
+                <p id="descripcion-estado">
+                    ANALIZANDO LA MESA
+                </p>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- HISTORIAL -->
+
+        <section class="bloque-historial-sesion">
+
+
+            <div class="titulo-bloque">
+                ULTIMOS GIROS
+            </div>
+
+
+            <div
+                id="historial-sesion"
+                class="historial-sesion"
+            >
+
+                <div class="giro-sesion"></div>
+
+                <div class="giro-sesion"></div>
+
+                <div class="giro-sesion"></div>
+
+                <div class="giro-sesion"></div>
+
+                <div class="giro-sesion"></div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ANALISIS -->
+
+        <section
+            id="panel-analisis"
+            class="panel-analisis"
+        >
+
+
+            <div class="encabezado-analisis">
+
+
+                <span class="titulo-analisis">
+                    ANALISIS
+                </span>
+
+
+                <span
+                    id="nivel-senal"
+                    class="nivel-senal nivel-espera"
+                >
+                    EN ESPERA
+                </span>
+
+
+            </div>
+
+
+
+            <!-- COLOR -->
+
+            <div
+                id="opcion-color"
+                class="opcion-analisis"
+            >
+
+                <span class="nombre-opcion">
+                    COLOR
+                </span>
+
+
+                <strong
+                    id="resultado-color"
+                    class="resultado-opcion"
+                >
+                    -
+                </strong>
+
+            </div>
+
+
+
+            <!-- MITADES -->
+
+            <div
+                id="opcion-mitades"
+                class="opcion-analisis"
+            >
+
+                <span class="nombre-opcion">
+                    MITADES
+                </span>
+                <strong
+                    id="resultado-mitades"
+                    class="resultado-opcion"
+                >
+                    -
+                </strong>
+
+            </div>
+
+
+
+            <!-- PARIDAD -->
+
+            <div
+                id="opcion-paridad"
+                class="opcion-analisis"
+            >
+
+                <span class="nombre-opcion">
+                    PAR / IMPAR
+                </span>
+
+
+                <strong
+                    id="resultado-paridad"
+                    class="resultado-opcion"
+                >
+                    -
+                </strong>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- CONFIRMAR APUESTA -->
+
+        <div
+            id="contenedor-confirmar-apuesta"
+            class="contenedor-confirmar-apuesta"
+        >
+
+
+            <div
+                id="efecto-fuego"
+                class="efecto-fuego"
+                aria-hidden="true"
+            >
+
+                <span class="llama llama-1"></span>
+
+                <span class="llama llama-2"></span>
+
+                <span class="llama llama-3"></span>
+
+                <span class="llama llama-4"></span>
+
+                <span class="llama llama-5"></span>
+
+                <span class="llama llama-6"></span>
+
+                <span class="llama llama-7"></span>
+
+                <span class="llama llama-8"></span>
+
+                <span class="llama llama-9"></span>
+
+                <span class="llama llama-10"></span>
+
+                <span class="llama llama-11"></span>
+
+                <span class="llama llama-12"></span>
+
+            </div>
+
+
+
+            <button
+                id="confirmar-analisis"
+                class="boton-confirmar-apuesta"
+                type="button"
+                disabled
+            >
+                CONFIRMAR APUESTA
+            </button>
+
+
+        </div>
+
+
+
+        <!-- NUEVO RESULTADO -->
+
+        <section
+            id="control-sesion"
+            class="control-sesion"
+        >
+
+
+            <input
+                id="numero-sesion"
+                class="entrada-numero entrada-numero-sesion"
+                type="text"
+                inputmode="numeric"
+                maxlength="2"
+                autocomplete="off"
+                placeholder="00"
+                aria-label="Nuevo numero de ruleta"
+            >
+
+
+
+            <button
+                id="boton-agregar-sesion"
+                class="boton-imagen boton-agregar-sesion"
+                type="button"
+                aria-label="Agregar nuevo numero"
+            >
+
+                <img
+                    src="AGREGAR.PNG"
+                    alt="AGREGAR"
+                    draggable="false"
+                >
+
+            </button>
+
+
+        </section>
+
+
+
+        <p
+            id="mensaje-sesion"
+            class="mensaje-sesion"
+            aria-live="polite"
+        >
+            MESA LISTA
+        </p>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SCRIPT PRINCIPAL
+====================================================== -->
+
+<script src="java.js?v=30"></script>
+
+            

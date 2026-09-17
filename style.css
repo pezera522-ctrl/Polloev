@@ -1,0 +1,7656 @@
+/* ========================================================= LA RUCALETA STYLE PRINCIPAL
+BLOQUE 1 BASE + VARIABLES + FONDO + PANTALLAS ========================================================= */
+/* ========================================================= VARIABLES ========================================================= */
+:root { --negro-total: #030303; --negro-profundo: #070707; --negro-panel: #0c0c0d; --negro-suave: #141416;
+--rojo-oscuro: #3d0006;
+--rojo-profundo: #65000a;
+--rojo: #a60012;
+--rojo-vivo: #e0001b;
+--rojo-brillo: #ff263d;
+
+--verde: #00a85a;
+--verde-brillo: #19e887;
+
+--blanco: #ffffff;
+--gris-claro: #d8d8dc;
+--gris: #8d8d95;
+--gris-oscuro: #343438;
+
+--borde-suave: rgba(255, 255, 255, 0.08);
+--borde-rojo: rgba(255, 30, 55, 0.34);
+
+--sombra-panel:
+    0 20px 60px rgba(0, 0, 0, 0.65);
+
+--sombra-roja:
+    0 0 18px rgba(225, 0, 27, 0.25),
+    0 0 50px rgba(130, 0, 15, 0.16);
+
+--radio-panel: 24px;
+--radio-boton: 18px;
+
+--ancho-app: 520px;
+
+--transicion-rapida: 180ms;
+--transicion-media: 350ms;
+--transicion-lenta: 700ms;
+}
+/* ========================================================= RESET ========================================================= */
+* { box-sizing: border-box; 
+    margin: 0; padding: 0;
+     -webkit-tap-highlight-color: transparent; }
+html { width: 100%; min-height: 100%; background: var(--negro-total); }
+body { width: 100%; min-height: 100vh; min-height: 100dvh;
+overflow-x: hidden;
+
+background:
+    radial-gradient(
+        circle at 50% -10%,
+        rgba(120, 0, 15, 0.20),
+        transparent 42%
+    ),
+    var(--negro-total);
+
+color: var(--blanco);
+
+font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+-webkit-font-smoothing: antialiased;
+text-rendering: optimizeLegibility;
+}
+button, input { font: inherit; }
+button { border: 0; outline: 0; }
+button, label { -webkit-user-select: none; user-select: none; }
+img { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
+/* ========================================================= SELECCION DE TEXTO ========================================================= */
+::selection { background: rgba(220, 0, 28, 0.45); color: #ffffff; }
+/* ========================================================= SCROLL ========================================================= */
+html { scrollbar-width: thin; scrollbar-color: rgba(180, 0, 20, 0.55) rgba(0, 0, 0, 0.2); }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.25); }
+::-webkit-scrollbar-thumb { background: linear-gradient( 180deg, rgba(220, 0, 25, 0.7), rgba(90, 0, 10, 0.8) );
+border-radius: 20px;
+}
+/* ========================================================= FONDO PRINCIPAL ========================================================= */
+.fondo-app { position: fixed; inset: 0;
+width: 100%;
+height: 100vh;
+height: 100dvh;
+
+overflow: hidden;
+
+pointer-events: none;
+
+z-index: 0;
+
+background:
+    radial-gradient(
+        ellipse at 50% 0%,
+        rgba(110, 0, 13, 0.20),
+        transparent 46%
+    ),
+    radial-gradient(
+        ellipse at 50% 100%,
+        rgba(75, 0, 8, 0.18),
+        transparent 48%
+    ),
+    linear-gradient(
+        180deg,
+        #070707 0%,
+        #030303 48%,
+        #050505 100%
+    );
+}
+/* ========================================================= RESPLANDOR DEL FONDO ========================================================= */
+.fondo-resplandor { position: absolute;
+width: 130vw;
+height: 70vh;
+
+left: 50%;
+top: -30%;
+
+transform: translateX(-50%);
+
+border-radius: 50%;
+
+background:
+    radial-gradient(
+        ellipse,
+        rgba(190, 0, 24, 0.19) 0%,
+        rgba(95, 0, 12, 0.10) 35%,
+        transparent 70%
+    );
+
+filter: blur(25px);
+
+animation:
+    respiracionFondo 7s ease-in-out infinite;
+}
+.fondo-resplandor::after { content: "";
+position: absolute;
+
+width: 70%;
+height: 60%;
+
+left: 15%;
+bottom: -115%;
+
+border-radius: 50%;
+
+background:
+    radial-gradient(
+        ellipse,
+        rgba(120, 0, 16, 0.12),
+        transparent 70%
+    );
+
+filter: blur(35px);
+}
+@keyframes respiracionFondo {
+0%,
+100% {
+    opacity: 0.55;
+    transform:
+        translateX(-50%)
+        scale(0.95);
+}
+
+50% {
+    opacity: 1;
+    transform:
+        translateX(-50%)
+        scale(1.08);
+}
+}
+/* ========================================================= VINETA ========================================================= */
+.fondo-vineta { position: absolute; inset: 0;
+background:
+    radial-gradient(
+        ellipse at center,
+        transparent 25%,
+        rgba(0, 0, 0, 0.22) 58%,
+        rgba(0, 0, 0, 0.78) 100%
+    );
+
+z-index: 2;
+}
+/* ========================================================= PARTICULAS DEL FONDO ========================================================= */
+.fondo-particulas { position: absolute; inset: -20%;
+opacity: 0.28;
+
+background-image:
+    radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.32) 0 0.7px,
+        transparent 0.9px
+    ),
+    radial-gradient(
+        circle,
+        rgba(210, 0, 28, 0.30) 0 0.8px,
+        transparent 1px
+    );
+
+background-size:
+    41px 41px,
+    73px 73px;
+
+background-position:
+    0 0,
+    20px 31px;
+
+animation:
+    moverParticulasFondo 25s linear infinite;
+
+z-index: 1;
+}
+@keyframes moverParticulasFondo {
+from {
+    transform:
+        translate3d(0, 0, 0);
+}
+
+to {
+    transform:
+        translate3d(-60px, 80px, 0);
+}
+}
+/* ========================================================= ESTRUCTURA GENERAL DE PANTALLAS ========================================================= */
+.pantalla { position: relative;
+z-index: 10;
+
+width: 100%;
+min-height: 100vh;
+min-height: 100dvh;
+
+padding:
+    max(24px, env(safe-area-inset-top))
+    max(18px, env(safe-area-inset-right))
+    max(28px, env(safe-area-inset-bottom))
+    max(18px, env(safe-area-inset-left));
+
+overflow-x: hidden;
+}
+/* ========================================================= CONTENEDOR CENTRAL ========================================================= */
+.inicio-contenido, .login-contenido, .instrucciones-contenido, .sesion-contenido, .contenido-sesion-activa { position: relative;
+width: min(
+    100%,
+    var(--ancho-app)
+);
+
+margin-left: auto;
+margin-right: auto;
+
+z-index: 2;
+}
+/* ========================================================= CAPA GLOBAL DE EFECTOS ========================================================= */
+.capa-efectos { position: fixed; inset: 0;
+width: 100%;
+height: 100vh;
+height: 100dvh;
+
+overflow: hidden;
+
+pointer-events: none;
+
+z-index: 9000;
+}
+/* ========================================================= OVERLAY DE TRANSICIONES ========================================================= */
+.overlay-transicion { position: fixed; inset: 0;
+z-index: 8000;
+
+pointer-events: none;
+
+opacity: 0;
+
+background:
+    radial-gradient(
+        circle at center,
+        rgba(210, 0, 27, 0.30),
+        rgba(35, 0, 5, 0.88) 45%,
+        #000000 100%
+    );
+
+transition:
+    opacity 420ms ease;
+}
+.overlay-transicion.overlay-activo { opacity: 1; }
+.overlay-transicion.overlay-apertura { opacity: 1;
+background:
+    linear-gradient(
+        90deg,
+        #000000 0%,
+        rgba(95, 0, 12, 0.95) 50%,
+        #000000 100%
+    );
+
+animation:
+    destelloApertura 700ms ease both;
+}
+@keyframes destelloApertura {
+0% {
+    opacity: 0;
+    transform: scaleX(0.2);
+}
+
+40% {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+100% {
+    opacity: 0;
+    transform: scaleX(1.08);
+}
+}
+/* ========================================================= ENTRADA Y SALIDA DE PANTALLAS ========================================================= */
+.pantalla-entrando { animation: entradaPantalla 650ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes entradaPantalla {
+from {
+    opacity: 0;
+    transform:
+        translateY(18px)
+        scale(0.985);
+
+    filter: blur(5px);
+}
+
+to {
+    opacity: 1;
+    transform:
+        translateY(0)
+        scale(1);
+
+    filter: blur(0);
+}
+}
+.pantalla-entrando-profunda { animation: entradaProfunda 800ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes entradaProfunda {
+0% {
+    opacity: 0;
+    transform:
+        scale(1.08)
+        translateY(25px);
+
+    filter:
+        blur(12px)
+        brightness(0.4);
+}
+
+60% {
+    opacity: 1;
+
+    filter:
+        blur(1px)
+        brightness(1.15);
+}
+
+100% {
+    opacity: 1;
+    transform:
+        scale(1)
+        translateY(0);
+
+    filter:
+        blur(0)
+        brightness(1);
+}
+}
+.pantalla-saliendo { animation: salidaPantalla 450ms cubic-bezier(0.55, 0, 1, 0.45) both; }
+@keyframes salidaPantalla {
+from {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+}
+
+to {
+    opacity: 0;
+    transform: scale(0.96);
+    filter: blur(8px);
+}
+}
+/* ========================================================= BOTONES GENERALES ========================================================= */
+button { cursor: pointer;
+touch-action: manipulation;
+
+transition:
+    transform var(--transicion-rapida) ease,
+    opacity var(--transicion-rapida) ease,
+    filter var(--transicion-rapida) ease;
+}
+button:disabled { cursor: default; }
+.boton-presionado:not(:disabled) { transform: scale(0.965) !important; }
+/* ========================================================= BOTONES CON IMAGEN ========================================================= */
+.boton-imagen { display: flex; align-items: center; justify-content: center;
+background: transparent;
+
+padding: 0;
+
+border: 0;
+
+overflow: visible;
+}
+.boton-imagen img { width: 100%; height: auto;
+object-fit: contain;
+
+pointer-events: none;
+
+filter:
+    drop-shadow(
+        0 8px 18px
+        rgba(0, 0, 0, 0.5)
+    );
+
+transition:
+    transform 220ms ease,
+    filter 220ms ease;
+}
+.boton-imagen:not(:disabled):active img { transform: scale(0.97);
+filter:
+    drop-shadow(
+        0 4px 10px
+        rgba(0, 0, 0, 0.55)
+    );
+}
+/* ========================================================= PULSO GENERICO ========================================================= */
+.pulso-elemento { animation: pulsoElemento 500ms ease; }
+@keyframes pulsoElemento {
+0% {
+    transform: scale(1);
+}
+
+35% {
+    transform: scale(1.035);
+}
+
+65% {
+    transform: scale(0.99);
+}
+
+100% {
+    transform: scale(1);
+}
+}
+/* =========================================================
+   LA RUCALETA
+   BLOQUE 2
+   PORTADA
+   ========================================================= */
+
+
+/* =========================================================
+   PANTALLA DE INICIO
+   ========================================================= */
+
+.pantalla-inicio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+.inicio-contenido {
+    min-height:
+        calc(
+            100dvh -
+            max(48px, env(safe-area-inset-top)) -
+            max(56px, env(safe-area-inset-bottom))
+        );
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: clamp(34px, 7vh, 70px);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   CONTENEDOR DEL LOGO
+   ========================================================= */
+
+.contenedor-logo {
+    position: relative;
+
+    width: min(88vw, 440px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    isolation: isolate;
+
+    animation:
+        entradaLogo 1.1s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+}
+
+
+/* =========================================================
+   HALO PRINCIPAL
+   ========================================================= */
+
+.halo-logo {
+    position: absolute;
+
+    width: 88%;
+    aspect-ratio: 1;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.9);
+
+    border-radius: 50%;
+
+    z-index: -1;
+
+    opacity: 0.75;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 28, 52, 0.18) 0%,
+            rgba(170, 0, 20, 0.13) 27%,
+            rgba(85, 0, 10, 0.06) 50%,
+            transparent 72%
+        );
+
+    filter: blur(16px);
+
+    animation:
+        respirarHaloLogo 4.6s
+        ease-in-out
+        infinite;
+}
+
+
+.halo-logo::before {
+    content: "";
+
+    position: absolute;
+    inset: 13%;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255, 60, 75, 0.12);
+
+    box-shadow:
+        0 0 30px
+        rgba(210, 0, 25, 0.08);
+
+    animation:
+        aroLogo 6s linear infinite;
+}
+
+
+.halo-logo::after {
+    content: "";
+
+    position: absolute;
+
+    width: 42%;
+    height: 42%;
+
+    left: 29%;
+    top: 29%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 25, 45, 0.16),
+            transparent 70%
+        );
+
+    filter: blur(12px);
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo-principal {
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    z-index: 2;
+
+    transform-origin: center;
+
+    filter:
+        drop-shadow(
+            0 12px 24px
+            rgba(0, 0, 0, 0.65)
+        )
+        drop-shadow(
+            0 0 20px
+            rgba(180, 0, 22, 0.16)
+        );
+
+    animation:
+        flotacionLogo 5s
+        ease-in-out
+        1.1s
+        infinite;
+}
+
+
+/* =========================================================
+   REFLEJO DETRAS DEL LOGO
+   ========================================================= */
+
+.contenedor-logo::before {
+    content: "";
+
+    position: absolute;
+
+    width: 72%;
+    height: 8px;
+
+    left: 14%;
+    bottom: -16px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(225, 0, 28, 0.25),
+            rgba(100, 0, 12, 0.08) 45%,
+            transparent 72%
+        );
+
+    filter: blur(8px);
+
+    opacity: 0.7;
+
+    animation:
+        reflejoLogo 5s
+        ease-in-out
+        1.1s
+        infinite;
+}
+
+
+/* =========================================================
+   ENTRADA DEL LOGO
+   ========================================================= */
+
+@keyframes entradaLogo {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(-30px)
+            scale(0.86);
+
+        filter:
+            blur(12px)
+            brightness(0.4);
+    }
+
+    55% {
+        opacity: 1;
+
+        transform:
+            translateY(4px)
+            scale(1.025);
+
+        filter:
+            blur(0)
+            brightness(1.12);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0)
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   MOVIMIENTO SUAVE DEL LOGO
+   ========================================================= */
+
+@keyframes flotacionLogo {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateY(-7px)
+            scale(1.008);
+    }
+
+}
+
+
+@keyframes respirarHaloLogo {
+
+    0%,
+    100% {
+        opacity: 0.48;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.88);
+    }
+
+    50% {
+        opacity: 0.95;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+
+}
+
+
+@keyframes aroLogo {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+@keyframes reflejoLogo {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scaleX(0.85);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scaleX(1.08);
+    }
+
+}
+
+
+/* =========================================================
+   BOTON INICIAR
+   ========================================================= */
+
+.boton-iniciar {
+    position: relative;
+
+    width: min(70vw, 300px);
+
+    z-index: 5;
+
+    opacity: 0;
+
+    transform:
+        translateY(25px)
+        scale(0.94);
+
+    animation:
+        entradaBotonInicio 800ms
+        cubic-bezier(0.16, 1, 0.3, 1)
+        650ms
+        forwards;
+}
+
+
+.boton-iniciar::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 12% 8%;
+
+    z-index: -1;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(230, 0, 30, 0.25),
+            transparent 70%
+        );
+
+    filter: blur(15px);
+
+    opacity: 0;
+
+    transition:
+        opacity 250ms ease,
+        transform 250ms ease;
+}
+
+
+.boton-iniciar:not(:disabled):hover::before {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+
+.boton-iniciar:not(:disabled):hover img {
+    transform: scale(1.025);
+
+    filter:
+        drop-shadow(
+            0 8px 18px
+            rgba(0, 0, 0, 0.55)
+        )
+        drop-shadow(
+            0 0 14px
+            rgba(230, 0, 30, 0.25)
+        );
+}
+
+
+.boton-iniciar:not(:disabled):active {
+    transform: scale(0.96);
+}
+
+
+@keyframes entradaBotonInicio {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.94);
+
+        filter: blur(5px);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform:
+            translateY(-2px)
+            scale(1.01);
+
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter: blur(0);
+    }
+
+}
+
+
+/* =========================================================
+   PREPARACION PARA TRANSICION DE RULETA
+
+   ESTAS CLASES LAS ACTIVA JAVA.JS
+   ========================================================= */
+
+.logo-preparando-salida {
+    animation:
+        logoPreparandoSalida 600ms
+        cubic-bezier(0.55, 0, 1, 0.45)
+        forwards !important;
+}
+
+
+.logo-preparando-salida .logo-principal {
+    animation: none;
+
+    filter:
+        drop-shadow(
+            0 0 30px
+            rgba(240, 0, 30, 0.35)
+        );
+}
+
+
+.logo-preparando-salida .halo-logo {
+    animation:
+        haloSalida 600ms
+        ease
+        forwards;
+}
+
+
+.boton-preparando-salida {
+    animation:
+        botonPreparandoSalida 500ms
+        ease
+        forwards !important;
+}
+
+
+@keyframes logoPreparandoSalida {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+
+    45% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            scale(0.82)
+            translateY(-20px);
+
+        filter: blur(8px);
+    }
+
+}
+
+
+@keyframes haloSalida {
+
+    0% {
+        opacity: 0.8;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+    55% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.35);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.8);
+    }
+
+}
+
+
+@keyframes botonPreparandoSalida {
+
+    from {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter: blur(0);
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.9);
+
+        filter: blur(6px);
+    }
+
+}
+
+
+/* =========================================================
+   AJUSTES PARA PANTALLAS PEQUENAS
+   ========================================================= */
+
+@media (max-height: 680px) {
+
+    .inicio-contenido {
+        gap: 24px;
+    }
+
+    .contenedor-logo {
+        width: min(72vw, 330px);
+    }
+
+    .boton-iniciar {
+        width: min(60vw, 250px);
+    }
+
+}
+
+
+@media (min-width: 700px) {
+
+    .contenedor-logo {
+        width: min(62vw, 470px);
+    }
+
+    .boton-iniciar {
+        width: 310px;
+    }
+
+}
+/* =========================================================
+   LA RUCALETA
+   BLOQUE 3
+   TRANSICION CINEMATICA DE RULETA
+   ========================================================= */
+
+
+/* =========================================================
+   CAPA COMPLETA
+   ========================================================= */
+
+.transicion-ruleta {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 8500;
+
+    opacity: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(70, 0, 8, 0.20),
+            rgba(0, 0, 0, 0.78) 58%,
+            #000000 100%
+        );
+}
+
+
+/* =========================================================
+   RESPLANDOR CENTRAL
+   ========================================================= */
+
+.transicion-ruleta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 80vmin;
+    height: 80vmin;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.2);
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 25, 45, 0.25) 0%,
+            rgba(150, 0, 20, 0.15) 35%,
+            transparent 70%
+        );
+
+    filter: blur(22px);
+}
+
+
+/* =========================================================
+   DESTELLO FINAL
+   ========================================================= */
+
+.transicion-ruleta::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 255, 255, 0.80) 0%,
+            rgba(255, 35, 55, 0.42) 8%,
+            rgba(130, 0, 18, 0.30) 25%,
+            transparent 58%
+        );
+
+    mix-blend-mode: screen;
+}
+
+
+/* =========================================================
+   RULETA
+   ========================================================= */
+
+.ruleta-animada {
+    position: relative;
+
+    width: min(74vw, 360px);
+    aspect-ratio: 1;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    transform:
+        scale(0.15)
+        rotate(0deg);
+
+    transform-origin: center;
+
+    will-change:
+        transform,
+        opacity,
+        filter;
+
+    background:
+        conic-gradient(
+            from -5deg,
+
+            #08723e 0deg 10deg,
+            #b80018 10deg 20deg,
+            #111111 20deg 30deg,
+            #b80018 30deg 40deg,
+            #111111 40deg 50deg,
+            #b80018 50deg 60deg,
+            #111111 60deg 70deg,
+            #b80018 70deg 80deg,
+            #111111 80deg 90deg,
+            #b80018 90deg 100deg,
+            #111111 100deg 110deg,
+            #b80018 110deg 120deg,
+            #111111 120deg 130deg,
+            #b80018 130deg 140deg,
+            #111111 140deg 150deg,
+            #b80018 150deg 160deg,
+            #111111 160deg 170deg,
+            #b80018 170deg 180deg,
+            #111111 180deg 190deg,
+            #b80018 190deg 200deg,
+            #111111 200deg 210deg,
+            #b80018 210deg 220deg,
+            #111111 220deg 230deg,
+            #b80018 230deg 240deg,
+            #111111 240deg 250deg,
+            #b80018 250deg 260deg,
+            #111111 260deg 270deg,
+            #b80018 270deg 280deg,
+            #111111 280deg 290deg,
+            #b80018 290deg 300deg,
+            #111111 300deg 310deg,
+            #b80018 310deg 320deg,
+            #111111 320deg 330deg,
+            #b80018 330deg 340deg,
+            #111111 340deg 350deg,
+            #b80018 350deg 360deg
+        );
+
+    border:
+        7px solid
+        rgba(12, 12, 12, 0.98);
+
+    box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.14),
+        0 0 0 8px rgba(60, 0, 8, 0.75),
+        0 0 35px rgba(230, 0, 30, 0.38),
+        0 0 90px rgba(120, 0, 16, 0.24),
+        0 30px 70px rgba(0, 0, 0, 0.85);
+}
+
+/* ========================================================= NUMEROS ALREDEDOR DE LA RULETA ========================================================= */
+.ruleta-casillas { 
+    position: absolute; 
+    inset: 0; 
+    border-radius: 50%; 
+    z-index: 4; 
+    pointer-events: none; }
+.casilla-ruleta { 
+    position: absolute;
+left: 50%;
+top: 50%;
+
+width: 32px;
+height: 32px;
+
+margin-left: -16px;
+margin-top: -16px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+color: #ffffff;
+
+font-size: 12px;
+font-weight: 800;
+
+transform-origin: center;
+}
+.casilla-r1 { transform: rotate(0deg) translateY(-145px) rotate(0deg); }
+.casilla-r2 { transform: rotate(30deg) translateY(-145px) rotate(-30deg); }
+.casilla-r3 { transform: rotate(60deg) translateY(-145px) rotate(-60deg); }
+.casilla-r4 { transform: rotate(90deg) translateY(-145px) rotate(-90deg); }
+.casilla-r5 { transform: rotate(120deg) translateY(-145px) rotate(-120deg); }
+.casilla-r6 { transform: rotate(150deg) translateY(-145px) rotate(-150deg); }
+.casilla-r7 { transform: rotate(180deg) translateY(-145px) rotate(-180deg); }
+.casilla-r8 { transform: rotate(210deg) translateY(-145px) rotate(-210deg); }
+.casilla-r9 { transform: rotate(240deg) translateY(-145px) rotate(-240deg); }
+.casilla-r10 { transform: rotate(270deg) translateY(-145px) rotate(-270deg); }
+.casilla-r11 { transform: rotate(300deg) translateY(-145px) rotate(-300deg); }
+.casilla-r12 { transform: rotate(330deg) translateY(-145px) rotate(-330deg); }
+/* =========================================================
+   ARO INTERIOR
+   ========================================================= */
+
+.ruleta-animada::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 14%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 43% 36%,
+            rgba(255, 255, 255, 0.20) 0%,
+            transparent 7%
+        ),
+        radial-gradient(
+            circle,
+            #181818 0%,
+            #0b0b0b 37%,
+            #310006 38%,
+            #71000d 42%,
+            #080808 44%,
+            #050505 100%
+        );
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        inset 0 0 25px rgba(0, 0, 0, 0.95),
+        inset 0 0 8px rgba(255, 255, 255, 0.10),
+        0 0 0 5px rgba(0, 0, 0, 0.70);
+}
+
+
+/* =========================================================
+   CENTRO DE RULETA
+   ========================================================= */
+
+.ruleta-animada::after {
+    content: "";
+
+    position: absolute;
+
+    width: 18%;
+    height: 18%;
+
+    left: 41%;
+    top: 41%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 38% 32%,
+            #f0f0f0 0%,
+            #777777 12%,
+            #222222 30%,
+            #080808 55%,
+            #000000 100%
+        );
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.20);
+
+    box-shadow:
+        0 0 0 6px rgba(70, 0, 8, 0.60),
+        0 0 22px rgba(255, 20, 45, 0.20);
+}
+
+
+/* =========================================================
+   ACTIVACION DESDE JAVA
+   ========================================================= */
+
+.transicion-ruleta.ruleta-transicion-activa {
+    opacity: 1;
+
+    animation:
+        fondoRuletaEntrada 1.1s ease both;
+}
+
+
+.transicion-ruleta.ruleta-transicion-activa::before {
+    animation:
+        resplandorRuleta 1.15s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+}
+
+
+.transicion-ruleta.ruleta-transicion-activa
+.ruleta-animada {
+    animation:
+        ruletaEntrada 1.25s
+        cubic-bezier(0.22, 0.75, 0.18, 1)
+        both;
+}
+
+
+/* =========================================================
+   ENTRADA Y CRECIMIENTO
+   ========================================================= */
+
+@keyframes fondoRuletaEntrada {
+
+    0% {
+        opacity: 0;
+        background-color: transparent;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.40);
+    }
+
+}
+
+
+@keyframes resplandorRuleta {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.15);
+    }
+
+    45% {
+        opacity: 0.9;
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.55);
+    }
+
+}
+
+
+@keyframes ruletaEntrada {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0.12)
+            rotate(0deg);
+
+        filter:
+            blur(5px)
+            brightness(0.55);
+    }
+
+    16% {
+        opacity: 1;
+
+        filter:
+            blur(0)
+            brightness(1.05);
+    }
+
+    48% {
+        opacity: 1;
+
+        transform:
+            scale(0.72)
+            rotate(420deg);
+    }
+
+    75% {
+        opacity: 1;
+
+        transform:
+            scale(1.45)
+            rotate(940deg);
+
+        filter:
+            blur(0)
+            brightness(1.18);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(4.8)
+            rotate(1440deg);
+
+        filter:
+            blur(1px)
+            brightness(0.82);
+    }
+
+}
+
+
+/* =========================================================
+   FASE FINAL
+   JAVA AGREGA ruleta-transicion-final
+   ========================================================= */
+
+.transicion-ruleta.ruleta-transicion-final {
+    animation:
+        cerrarTransicionRuleta 650ms
+        ease
+        forwards;
+}
+
+
+.transicion-ruleta.ruleta-transicion-final::after {
+    animation:
+        flashRuletaFinal 600ms
+        ease-out
+        forwards;
+}
+
+
+.transicion-ruleta.ruleta-transicion-final
+.ruleta-animada {
+    animation:
+        ruletaFinal 650ms
+        cubic-bezier(0.4, 0, 1, 1)
+        forwards;
+}
+
+
+@keyframes ruletaFinal {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            scale(4.8)
+            rotate(1440deg);
+
+        filter:
+            blur(1px)
+            brightness(0.82);
+    }
+
+    42% {
+        opacity: 1;
+
+        transform:
+            scale(6.3)
+            rotate(1690deg);
+
+        filter:
+            blur(3px)
+            brightness(1.15);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            scale(8.5)
+            rotate(1900deg);
+
+        filter:
+            blur(14px)
+            brightness(0.15);
+    }
+
+}
+
+
+@keyframes flashRuletaFinal {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+
+    32% {
+        opacity: 0.92;
+        transform: scale(1);
+    }
+
+    62% {
+        opacity: 0.25;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.35);
+    }
+
+}
+
+
+@keyframes cerrarTransicionRuleta {
+
+    0% {
+        opacity: 1;
+    }
+
+    68% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   LOGIN REVELADO DETRAS DE LA RULETA
+   ESTA CLASE TAMBIEN LA ACTIVA JAVA
+   ========================================================= */
+
+.pantalla-login-revelada {
+    animation:
+        revelarLoginRuleta 950ms
+        cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+}
+
+
+@keyframes revelarLoginRuleta {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(1.08);
+
+        filter:
+            blur(14px)
+            brightness(0.35);
+    }
+
+    45% {
+        opacity: 0.45;
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+        filter:
+            blur(0)
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   AJUSTES MOVILES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .ruleta-animada {
+        width: min(78vw, 330px);
+    }
+
+}
+
+
+@media (max-height: 650px) {
+
+    .ruleta-animada {
+        width: min(62vh, 310px);
+    }
+
+}
+/* =========================================================
+   LA RUCALETA
+   BLOQUE 4
+   LOGIN PREMIUM
+   ========================================================= */
+
+
+/* =========================================================
+   PANTALLA LOGIN
+   ========================================================= */
+
+.pantalla-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 22%,
+            rgba(145, 0, 18, 0.16),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(80, 0, 12, 0.14),
+            transparent 45%
+        );
+}
+
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+
+.login-contenido {
+    position: relative;
+
+    width: min(100%, 470px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: clamp(18px, 3vh, 28px);
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   LOGO LOGIN
+   ========================================================= */
+
+.login-logo-contenedor {
+    position: relative;
+
+    width: min(64vw, 285px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    isolation: isolate;
+
+    animation:
+        loginLogoEntrada 850ms
+        cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+}
+
+
+.login-logo {
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    z-index: 2;
+
+    filter:
+        drop-shadow(
+            0 10px 22px
+            rgba(0, 0, 0, 0.70)
+        )
+        drop-shadow(
+            0 0 18px
+            rgba(210, 0, 28, 0.18)
+        );
+
+    animation:
+        loginLogoFlotar 4.5s
+        ease-in-out
+        900ms
+        infinite;
+}
+
+
+.login-halo {
+    position: absolute;
+
+    width: 115%;
+    aspect-ratio: 1;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(235, 0, 30, 0.16) 0%,
+            rgba(120, 0, 16, 0.09) 38%,
+            transparent 70%
+        );
+
+    filter: blur(15px);
+
+    animation:
+        loginHaloRespira 4s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   PANEL PRINCIPAL
+   ========================================================= */
+
+.login-panel {
+    position: relative;
+
+    width: min(92vw, 410px);
+
+    padding:
+        clamp(24px, 5vw, 34px)
+        clamp(20px, 5vw, 32px);
+
+    border-radius: 26px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24, 24, 27, 0.94),
+            rgba(7, 7, 9, 0.97)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    box-shadow:
+        0 28px 70px rgba(0, 0, 0, 0.65),
+        0 0 0 1px rgba(180, 0, 24, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    animation:
+        loginPanelEntrada 900ms
+        cubic-bezier(0.16, 1, 0.3, 1)
+        100ms
+        both;
+}
+
+
+/* LINEA SUPERIOR */
+
+.login-panel::before {
+    content: "";
+
+    position: absolute;
+
+    left: 15%;
+    top: 0;
+
+    width: 70%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 45, 65, 0.85),
+            transparent
+        );
+
+    box-shadow:
+        0 0 18px
+        rgba(230, 0, 30, 0.45);
+}
+
+
+/* LUZ INTERIOR */
+
+.login-panel::after {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    right: -95px;
+    top: -110px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(220, 0, 28, 0.11),
+            transparent 70%
+        );
+
+    filter: blur(8px);
+}
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+.login-encabezado {
+    position: relative;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    z-index: 2;
+}
+
+
+.login-etiqueta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 26px;
+
+    padding: 0 12px;
+
+    margin-bottom: 11px;
+
+    border-radius: 999px;
+
+    border:
+        1px solid
+        rgba(235, 35, 55, 0.20);
+
+    background:
+        rgba(135, 0, 18, 0.10);
+
+    color:
+        rgba(255, 135, 145, 0.92);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+
+.login-titulo {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(24px, 6vw, 32px);
+
+    font-weight: 900;
+
+    letter-spacing: 0.055em;
+
+    line-height: 1.05;
+
+    text-shadow:
+        0 4px 16px
+        rgba(0, 0, 0, 0.55);
+}
+
+
+.login-descripcion {
+    margin-top: 10px;
+
+    color:
+        rgba(255, 255, 255, 0.52);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   CAMPOS
+   ========================================================= */
+
+.login-campo {
+    position: relative;
+
+    width: 100%;
+
+    margin-top: 16px;
+
+    z-index: 2;
+}
+
+
+.login-campo label {
+    display: block;
+
+    margin:
+        0
+        0
+        8px
+        4px;
+
+    color:
+        rgba(255, 255, 255, 0.60);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.13em;
+}
+
+
+.login-input {
+    width: 100%;
+    height: 54px;
+
+    padding: 0 17px;
+
+    border-radius: 15px;
+
+    outline: none;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    background:
+        rgba(0, 0, 0, 0.42);
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    letter-spacing: 0.035em;
+
+    caret-color: #ff3048;
+
+    box-shadow:
+        inset 0 1px 8px
+        rgba(0, 0, 0, 0.45);
+
+    transition:
+        border-color 220ms ease,
+        background 220ms ease,
+        box-shadow 220ms ease,
+        transform 220ms ease;
+}
+
+
+.login-input::placeholder {
+    color:
+        rgba(255, 255, 255, 0.22);
+
+    font-size: 12px;
+
+    letter-spacing: 0.10em;
+}
+
+
+.login-input:hover {
+    border-color:
+        rgba(255, 255, 255, 0.15);
+}
+
+
+.login-input:focus {
+    border-color:
+        rgba(245, 35, 55, 0.62);
+
+    background:
+        rgba(12, 3, 5, 0.70);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(220, 0, 28, 0.09),
+        0 0 24px
+        rgba(190, 0, 24, 0.10),
+        inset 0 1px 8px
+        rgba(0, 0, 0, 0.42);
+
+    transform:
+        translateY(-1px);
+}
+
+.boton-ver-clave {
+    color: #9b7479;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+/* =========================================================
+   BOTON ENTRAR
+   ========================================================= */
+
+.boton-login {
+    position: relative;
+
+    width: 100%;
+    height: 56px;
+
+    margin-top: 24px;
+
+    border: 0;
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7f0010 0%,
+            #c0001c 48%,
+            #8d0012 100%
+        );
+
+    font-size: 13px;
+    font-weight: 900;
+
+    letter-spacing: 0.13em;
+
+    box-shadow:
+        0 12px 30px
+        rgba(120, 0, 16, 0.30),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.16);
+
+    transition:
+        transform 180ms ease,
+        filter 180ms ease,
+        box-shadow 180ms ease;
+
+    z-index: 2;
+}
+
+
+.boton-login::before {
+    content: "";
+
+    position: absolute;
+
+    width: 42%;
+    height: 220%;
+
+    left: -65%;
+    top: -60%;
+
+    transform:
+        rotate(20deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.23),
+            transparent
+        );
+
+    transition:
+        left 650ms
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.boton-login:not(:disabled):hover::before {
+    left: 125%;
+}
+
+
+.boton-login:not(:disabled):hover {
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.13);
+
+    box-shadow:
+        0 16px 36px
+        rgba(160, 0, 22, 0.38),
+        0 0 25px
+        rgba(220, 0, 28, 0.13);
+}
+
+
+.boton-login:not(:disabled):active {
+    transform:
+        translateY(0)
+        scale(0.975);
+}
+
+
+.boton-login:disabled {
+    cursor: default;
+
+    opacity: 0.58;
+
+    filter:
+        saturate(0.65);
+}
+
+
+/* =========================================================
+   MENSAJE
+   ========================================================= */
+
+.mensaje-login {
+    min-height: 17px;
+
+    margin-top: 14px;
+    margin-bottom: 0;
+
+    text-align: center;
+
+    color:
+        rgba(255, 255, 255, 0.40);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    transition:
+        color 200ms ease,
+        text-shadow 200ms ease;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.login-panel.login-error {
+    animation:
+        loginError 430ms
+        ease;
+}
+
+
+.login-panel.login-error
+.mensaje-login {
+    color: #ff5265;
+
+    text-shadow:
+        0 0 14px
+        rgba(255, 25, 50, 0.32);
+}
+
+
+@keyframes loginError {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-8px);
+    }
+
+    40% {
+        transform: translateX(7px);
+    }
+
+    60% {
+        transform: translateX(-5px);
+    }
+
+    80% {
+        transform: translateX(3px);
+    }
+
+}
+
+
+/* =========================================================
+   ACCESO CORRECTO
+   ========================================================= */
+
+.login-panel.login-correcto {
+    border-color:
+        rgba(70, 255, 155, 0.32);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, 0.65),
+        0 0 34px
+        rgba(20, 220, 120, 0.11),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.07);
+
+    animation:
+        loginCorrecto 750ms
+        cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+}
+
+
+.login-panel.login-correcto
+.mensaje-login {
+    color:
+        rgba(105, 255, 175, 0.95);
+
+    text-shadow:
+        0 0 16px
+        rgba(40, 255, 145, 0.30);
+}
+
+
+@keyframes loginCorrecto {
+
+    0% {
+        transform: scale(1);
+    }
+
+    35% {
+        transform: scale(1.018);
+
+        filter:
+            brightness(1.13);
+    }
+
+    100% {
+        transform: scale(1);
+
+        filter:
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   SALIDA DEL LOGIN
+   ========================================================= */
+
+.login-saliendo
+.login-contenido {
+    animation:
+        loginContenidoSalida 650ms
+        cubic-bezier(0.55, 0, 1, 0.45)
+        forwards;
+}
+
+
+@keyframes loginContenidoSalida {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+        filter:
+            blur(0)
+            brightness(1);
+    }
+
+    45% {
+        opacity: 1;
+
+        transform:
+            scale(1.025);
+
+        filter:
+            blur(0)
+            brightness(1.15);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            scale(0.90);
+
+        filter:
+            blur(10px)
+            brightness(0.35);
+    }
+
+}
+
+
+/* =========================================================
+   ANIMACIONES DE ENTRADA
+   ========================================================= */
+
+@keyframes loginLogoEntrada {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(-22px)
+            scale(0.88);
+
+        filter:
+            blur(9px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0);
+    }
+
+}
+
+
+@keyframes loginLogoFlotar {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-5px);
+    }
+
+}
+
+
+@keyframes loginHaloRespira {
+
+    0%,
+    100% {
+        opacity: 0.42;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.90);
+    }
+
+    50% {
+        opacity: 0.88;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.10);
+    }
+
+}
+
+
+@keyframes loginPanelEntrada {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.94);
+
+        filter:
+            blur(10px)
+            brightness(0.55);
+    }
+
+    65% {
+        opacity: 1;
+
+        transform:
+            translateY(-3px)
+            scale(1.008);
+
+        filter:
+            blur(0)
+            brightness(1.08);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0)
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   PANTALLAS PEQUENAS
+   ========================================================= */
+
+@media (max-height: 720px) {
+
+    .login-contenido {
+        gap: 12px;
+    }
+
+    .login-logo-contenedor {
+        width: min(48vw, 215px);
+    }
+
+    .login-panel {
+        padding:
+            20px
+            20px;
+    }
+
+    .login-encabezado {
+        margin-bottom: 16px;
+    }
+
+    .login-campo {
+        margin-top: 11px;
+    }
+
+    .login-input {
+        height: 48px;
+    }
+
+    .boton-login {
+        height: 50px;
+        margin-top: 17px;
+    }
+
+}
+
+
+@media (min-width: 700px) {
+
+    .login-logo-contenedor {
+        width: 300px;
+    }
+
+    .login-panel {
+        width: 420px;
+    }
+
+}
+/* =========================================================
+   LA RUCALETA
+   BLOQUE 5
+   INSTRUCCIONES Y AVISO DE USO
+   ========================================================= */
+
+
+/* =========================================================
+   PANTALLA
+   ========================================================= */
+
+.pantalla-instrucciones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background:
+        radial-gradient(
+            circle at 50% 8%,
+            rgba(155, 0, 20, 0.15),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 50% 95%,
+            rgba(90, 0, 14, 0.12),
+            transparent 42%
+        );
+}
+
+
+/* =========================================================
+   CONTENIDO GENERAL
+   ========================================================= */
+
+.instrucciones-contenido {
+    position: relative;
+
+    width: min(100%, 680px);
+
+    margin: auto;
+
+    padding:
+        12px
+        0
+        30px;
+
+    z-index: 5;
+
+    animation:
+        instruccionesEntrada 850ms
+        cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+}
+
+
+/* =========================================================
+   CABECERA
+   ========================================================= */
+
+.instrucciones-cabecera {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 22px;
+
+    text-align: center;
+}
+
+
+.instrucciones-logo {
+    width: min(48vw, 220px);
+    height: auto;
+
+    margin-bottom: 12px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 8px 18px
+            rgba(0, 0, 0, 0.60)
+        )
+        drop-shadow(
+            0 0 15px
+            rgba(200, 0, 26, 0.14)
+        );
+
+    animation:
+        instruccionesLogoFlota 5s
+        ease-in-out
+        infinite;
+}
+
+
+.instrucciones-etiqueta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 25px;
+
+    padding: 0 12px;
+
+    margin-bottom: 9px;
+
+    border-radius: 999px;
+
+    border:
+        1px solid
+        rgba(235, 35, 55, 0.18);
+
+    background:
+        rgba(130, 0, 18, 0.09);
+
+    color:
+        rgba(255, 125, 140, 0.92);
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 0.16em;
+}
+
+
+.instrucciones-titulo {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(25px, 7vw, 36px);
+
+    font-weight: 900;
+
+    line-height: 1.05;
+
+    letter-spacing: 0.055em;
+}
+
+
+.instrucciones-subtitulo {
+    max-width: 480px;
+
+    margin:
+        10px
+        auto
+        0;
+
+    color:
+        rgba(255, 255, 255, 0.52);
+
+    font-size: 12px;
+    font-weight: 650;
+
+    line-height: 1.55;
+
+    letter-spacing: 0.025em;
+}
+
+
+/* =========================================================
+   PANEL PRINCIPAL
+   ========================================================= */
+
+.instrucciones-panel {
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        clamp(20px, 5vw, 32px);
+
+    border-radius: 27px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.085);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(23, 23, 26, 0.95),
+            rgba(6, 6, 8, 0.98)
+        );
+
+    box-shadow:
+        0 28px 70px
+        rgba(0, 0, 0, 0.62),
+        0 0 0 1px
+        rgba(170, 0, 24, 0.06),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.045);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+
+.instrucciones-panel::before {
+    content: "";
+
+    position: absolute;
+
+    left: 12%;
+    top: 0;
+
+    width: 76%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 40, 60, 0.78),
+            transparent
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(225, 0, 30, 0.32);
+}
+
+
+/* =========================================================
+   INTRODUCCION
+   ========================================================= */
+
+.instrucciones-intro {
+    position: relative;
+
+    margin-bottom: 20px;
+
+    padding-bottom: 19px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.065);
+}
+
+
+.instrucciones-intro-titulo {
+    margin:
+        0
+        0
+        7px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 900;
+
+    letter-spacing: 0.045em;
+}
+
+
+.instrucciones-intro-texto {
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.58);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   PASOS
+   ========================================================= */
+
+.instrucciones-pasos {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+}
+
+
+.instruccion-paso {
+    position: relative;
+
+    min-height: 112px;
+
+    padding:
+        15px
+        13px;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.065);
+
+    transition:
+        transform 220ms ease,
+        border-color 220ms ease,
+        background 220ms ease;
+}
+
+
+.instruccion-paso:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(225, 30, 50, 0.20);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(150, 0, 20, 0.09),
+            rgba(255, 255, 255, 0.02)
+        );
+}
+
+
+.paso-numero {
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 10px;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #a40016,
+            #5f000c
+        );
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    box-shadow:
+        0 5px 15px
+        rgba(130, 0, 18, 0.22);
+}
+
+
+.paso-titulo {
+    margin:
+        0
+        0
+        5px;
+
+    color:
+        rgba(255, 255, 255, 0.91);
+
+    font-size: 11px;
+    font-weight: 900;
+
+    line-height: 1.25;
+
+    letter-spacing: 0.045em;
+}
+
+
+.paso-texto {
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.46);
+
+    font-size: 10px;
+    font-weight: 600;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   MODULOS DE ANALISIS
+   ========================================================= */
+
+.analisis-explicacion {
+    margin-bottom: 22px;
+}
+
+
+.analisis-explicacion-titulo {
+    margin:
+        0
+        0
+        11px;
+
+    color:
+        rgba(255, 255, 255, 0.72);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 0.13em;
+}
+
+
+.modulos-analisis {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 9px;
+}
+
+
+.modulo-analisis {
+    position: relative;
+
+    min-height: 72px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding:
+        12px
+        11px;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    background:
+        rgba(0, 0, 0, 0.28);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.065);
+}
+
+
+.modulo-analisis::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 18%;
+
+    width: 2px;
+    height: 64%;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            #ff354e,
+            #75000f
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(240, 0, 32, 0.30);
+}
+
+
+.modulo-nombre {
+    margin-bottom: 5px;
+
+    color:
+        rgba(255, 255, 255, 0.91);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 0.055em;
+}
+
+
+.modulo-opciones {
+    color:
+        rgba(255, 255, 255, 0.42);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   SECUENCIA DE INTENTOS
+   ========================================================= */
+
+.instrucciones-secuencia {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+
+    padding:
+        14px
+        15px;
+
+    border-radius: 17px;
+
+    border:
+        1px solid
+        rgba(225, 30, 50, 0.12);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(115, 0, 16, 0.10),
+            rgba(255, 255, 255, 0.018)
+        );
+}
+
+
+.secuencia-indicador {
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+}
+
+
+.secuencia-punto {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 45, 65, 0.82);
+
+    box-shadow:
+        0 0 9px
+        rgba(230, 0, 30, 0.25);
+}
+
+
+.secuencia-texto {
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.54);
+
+    font-size: 10px;
+    font-weight: 650;
+
+    line-height: 1.5;
+}
+
+
+.secuencia-texto strong {
+    color:
+        rgba(255, 255, 255, 0.88);
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   AVISO DE USO
+   ========================================================= */
+
+.aviso-uso {
+    position: relative;
+
+    margin-top: 3px;
+
+    padding:
+        16px
+        17px;
+
+    border-radius: 17px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+}
+
+
+.aviso-uso-titulo {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    margin:
+        0
+        0
+        7px;
+
+    color:
+        rgba(255, 255, 255, 0.78);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 0.10em;
+}
+
+
+.aviso-uso-titulo::before {
+    content: "!";
+
+    width: 20px;
+    height: 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(180, 0, 24, 0.16);
+
+    border:
+        1px solid
+        rgba(255, 45, 65, 0.20);
+
+    color: #ff6b7d;
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+
+.aviso-uso-texto {
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.42);
+
+    font-size: 9px;
+    font-weight: 600;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   ACEPTACION
+   ========================================================= */
+
+.aceptacion-instrucciones {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding:
+        14px
+        15px;
+
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    background:
+        rgba(0, 0, 0, 0.25);
+
+    transition:
+        border-color 220ms ease,
+        background 220ms ease,
+        transform 180ms ease;
+}
+
+
+.aceptacion-instrucciones:active {
+    transform:
+        scale(0.988);
+}
+
+
+.aceptacion-instrucciones.aceptado {
+    border-color:
+        rgba(65, 230, 145, 0.24);
+
+    background:
+        rgba(20, 125, 75, 0.07);
+}
+
+
+/* =========================================================
+   CHECKBOX REAL
+   ========================================================= */
+
+.checkbox-instrucciones {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CHECKBOX VISUAL
+   ========================================================= */
+
+.checkbox-visual {
+    position: relative;
+
+    flex: 0 0 auto;
+
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.17);
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    box-shadow:
+        inset 0 0 7px
+        rgba(0, 0, 0, 0.45);
+
+    transition:
+        background 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease,
+        transform 220ms ease;
+}
+
+
+.checkbox-visual::after {
+    content: "";
+
+    width: 9px;
+    height: 5px;
+
+    margin-top: -2px;
+
+    border-left:
+        2px solid #ffffff;
+
+    border-bottom:
+        2px solid #ffffff;
+
+    opacity: 0;
+
+    transform:
+        rotate(-45deg)
+        scale(0.35);
+
+    transition:
+        opacity 180ms ease,
+        transform 250ms
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.checkbox-instrucciones:checked
++
+.checkbox-visual {
+    border-color:
+        rgba(70, 255, 155, 0.50);
+
+    background:
+        linear-gradient(
+            145deg,
+            #15834f,
+            #075e37
+        );
+
+    box-shadow:
+        0 0 17px
+        rgba(45, 230, 135, 0.18),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.17);
+
+    transform:
+        scale(1.06);
+}
+
+
+.checkbox-instrucciones:checked
++
+.checkbox-visual::after {
+    opacity: 1;
+
+    transform:
+        rotate(-45deg)
+        scale(1);
+}
+
+
+.aceptacion-texto {
+    color:
+        rgba(255, 255, 255, 0.56);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    line-height: 1.45;
+
+    letter-spacing: 0.045em;
+}
+
+
+/* =========================================================
+   BOTON CONTINUAR
+   ========================================================= */
+
+.boton-continuar-instrucciones {
+    position: relative;
+
+    width: 100%;
+    height: 56px;
+
+    margin-top: 15px;
+
+    overflow: hidden;
+
+    border: 0;
+    border-radius: 16px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8e0013,
+            #c6001d,
+            #820010
+        );
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 0.12em;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 30px
+        rgba(130, 0, 18, 0.28);
+
+    transition:
+        opacity 220ms ease,
+        filter 220ms ease,
+        transform 180ms ease,
+        box-shadow 220ms ease;
+}
+
+
+.boton-continuar-instrucciones::before {
+    content: "";
+
+    position: absolute;
+
+    width: 35%;
+    height: 220%;
+
+    left: -55%;
+    top: -60%;
+
+    transform:
+        rotate(20deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.22),
+            transparent
+        );
+
+    transition:
+        left 650ms
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.boton-continuar-instrucciones:not(:disabled):hover::before {
+    left: 125%;
+}
+
+
+.boton-continuar-instrucciones:not(:disabled):hover {
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.13);
+
+    box-shadow:
+        0 15px 35px
+        rgba(155, 0, 22, 0.36);
+}
+
+
+.boton-continuar-instrucciones:not(:disabled):active {
+    transform:
+        scale(0.98);
+}
+
+
+.boton-continuar-instrucciones:disabled {
+    cursor: default;
+
+    opacity: 0.25;
+
+    filter:
+        grayscale(0.45)
+        brightness(0.68);
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   CHECK CONFIRMADO
+   ========================================================= */
+
+.aceptacion-instrucciones.aceptado
+.aceptacion-texto {
+    color:
+        rgba(200, 255, 225, 0.76);
+}
+
+
+.aceptacion-instrucciones.aceptado {
+    animation:
+        aceptacionConfirmada 420ms
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+@keyframes aceptacionConfirmada {
+
+    0% {
+        transform:
+            scale(1);
+    }
+
+    45% {
+        transform:
+            scale(1.012);
+
+        box-shadow:
+            0 0 22px
+            rgba(40, 220, 130, 0.10);
+    }
+
+    100% {
+        transform:
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   SALIDA HACIA LOS 10 NUMEROS
+   ========================================================= */
+
+.instrucciones-saliendo
+.instrucciones-contenido {
+    animation:
+        instruccionesSalida 720ms
+        cubic-bezier(0.55, 0, 1, 0.45)
+        forwards;
+}
+
+
+@keyframes instruccionesSalida {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+        filter:
+            blur(0)
+            brightness(1);
+    }
+
+    40% {
+        opacity: 1;
+
+        transform:
+            scale(1.018);
+
+        filter:
+            blur(0)
+            brightness(1.14);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            scale(1.10);
+
+        filter:
+            blur(14px)
+            brightness(0.25);
+    }
+
+}
+
+
+/* =========================================================
+   ENTRADA
+   ========================================================= */
+
+@keyframes instruccionesEntrada {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(28px)
+            scale(0.965);
+
+        filter:
+            blur(10px)
+            brightness(0.55);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0)
+            brightness(1);
+    }
+
+}
+
+
+@keyframes instruccionesLogoFlota {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-4px);
+    }
+
+}
+
+
+/* =========================================================
+   MOVIL
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+    .instrucciones-contenido {
+        width: 100%;
+
+        padding-bottom:
+            max(
+                28px,
+                env(safe-area-inset-bottom)
+            );
+    }
+
+    .instrucciones-pasos {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .instruccion-paso {
+        min-height: auto;
+
+        display: grid;
+
+        grid-template-columns:
+            31px
+            1fr;
+
+        column-gap: 10px;
+
+        padding: 12px;
+    }
+
+    .paso-numero {
+        grid-row:
+            1 / 3;
+
+        margin: 0;
+    }
+
+    .paso-titulo {
+        align-self: end;
+    }
+
+    .modulos-analisis {
+        grid-template-columns: 1fr;
+        gap: 7px;
+    }
+
+    .modulo-analisis {
+        min-height: 58px;
+    }
+
+}
+
+
+/* =========================================================
+   PANTALLAS BAJAS
+   ========================================================= */
+
+@media (max-height: 700px) {
+
+    .instrucciones-cabecera {
+        margin-bottom: 15px;
+    }
+
+    .instrucciones-logo {
+        width: min(38vw, 165px);
+        margin-bottom: 7px;
+    }
+
+    .instrucciones-panel {
+        padding: 18px;
+    }
+
+}
+/* =========================================================
+   LA RUCALETA
+   BLOQUE 6
+   ULTIMOS 10 NUMEROS
+   ========================================================= */
+
+
+/* =========================================================
+   PANTALLA
+   ========================================================= */
+
+.pantalla-sesion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background:
+        radial-gradient(
+            circle at 50% 18%,
+            rgba(145, 0, 18, 0.14),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 50% 95%,
+            rgba(75, 0, 12, 0.12),
+            transparent 45%
+        );
+}
+
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+
+.sesion-contenido {
+    position: relative;
+
+    width: min(100%, 540px);
+
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding:
+        18px
+        0
+        30px;
+
+    z-index: 5;
+
+    animation:
+        sesionNumerosEntrada 800ms
+        cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+}
+
+
+/* =========================================================
+   TITULO EN IMAGEN
+   ========================================================= */
+
+.titulo-sesion {
+    position: relative;
+
+    width: min(88vw, 410px);
+
+    margin-bottom: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.titulo-sesion img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 8px 18px
+            rgba(0, 0, 0, 0.60)
+        )
+        drop-shadow(
+            0 0 15px
+            rgba(205, 0, 28, 0.14)
+        );
+}
+
+
+/* =========================================================
+   CONTADOR 0/10
+   ========================================================= */
+
+.progreso-inicial {
+    position: relative;
+
+    min-width: 108px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    margin-bottom: 18px;
+
+    padding: 0 14px;
+
+    border-radius: 999px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    box-shadow:
+        0 8px 22px
+        rgba(0, 0, 0, 0.28),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.04);
+}
+
+
+.progreso-etiqueta {
+    color:
+        rgba(255, 255, 255, 0.42);
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 0.12em;
+}
+
+
+#contador-inicial {
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 900;
+
+    letter-spacing: 0.04em;
+
+    text-shadow:
+        0 0 12px
+        rgba(230, 0, 30, 0.16);
+}
+
+
+/* =========================================================
+   PANEL DE LOS 10 NUMEROS
+   ========================================================= */
+
+.historial-numeros {
+    position: relative;
+
+    width: min(92vw, 450px);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: clamp(7px, 2vw, 10px);
+
+    padding:
+        clamp(13px, 3vw, 18px);
+
+    border-radius: 23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22, 22, 25, 0.94),
+            rgba(6, 6, 8, 0.97)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.075);
+
+    box-shadow:
+        0 24px 60px
+        rgba(0, 0, 0, 0.55),
+        0 0 0 1px
+        rgba(160, 0, 22, 0.05),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.04);
+}
+
+
+.historial-numeros::before {
+    content: "";
+
+    position: absolute;
+
+    left: 15%;
+    top: 0;
+
+    width: 70%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 40, 60, 0.65),
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(225, 0, 28, 0.28);
+}
+
+
+/* =========================================================
+   CASILLAS
+   ========================================================= */
+
+.casilla-historial {
+    position: relative;
+
+    aspect-ratio: 1;
+
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border-radius: 13px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    outline: none;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.015)
+        );
+
+    color:
+        rgba(255, 255, 255, 0.25);
+
+    font-size:
+        clamp(14px, 4vw, 20px);
+
+    font-weight: 900;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.035),
+        0 5px 12px
+        rgba(0, 0, 0, 0.20);
+
+    transition:
+        transform 180ms ease,
+        border-color 200ms ease,
+        background 200ms ease,
+        box-shadow 200ms ease,
+        filter 200ms ease;
+}
+
+
+.casilla-historial:not(:empty):hover {
+    transform:
+        translateY(-2px)
+        scale(1.025);
+}
+
+
+.casilla-historial:not(:empty):active {
+    transform:
+        scale(0.94);
+}
+
+
+/* =========================================================
+   NUMERO ROJO
+   ========================================================= */
+
+.numero-rojo {
+    color: #ffffff !important;
+
+    border-color:
+        rgba(255, 80, 95, 0.24) !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ba001b,
+            #70000e
+        ) !important;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.14),
+        0 7px 16px
+        rgba(125, 0, 17, 0.28) !important;
+
+    text-shadow:
+        0 2px 4px
+        rgba(0, 0, 0, 0.55);
+}
+
+
+/* =========================================================
+   NUMERO NEGRO
+   ========================================================= */
+
+.numero-negro {
+    color: #ffffff !important;
+
+    border-color:
+        rgba(255, 255, 255, 0.12) !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            #252528,
+            #080809
+        ) !important;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.10),
+        0 7px 16px
+        rgba(0, 0, 0, 0.38) !important;
+
+    text-shadow:
+        0 2px 4px
+        rgba(0, 0, 0, 0.65);
+}
+
+
+/* =========================================================
+   NUMERO VERDE
+   ========================================================= */
+
+.numero-verde {
+    color: #ffffff !important;
+
+    border-color:
+        rgba(80, 255, 165, 0.20) !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            #087442,
+            #034126
+        ) !important;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.11),
+        0 7px 16px
+        rgba(0, 105, 60, 0.24) !important;
+
+    text-shadow:
+        0 2px 4px
+        rgba(0, 0, 0, 0.55);
+}
+
+
+/* =========================================================
+   APARICION DE UN NUMERO
+   ========================================================= */
+
+.casilla-historial.numero-nuevo {
+    animation:
+        numeroNuevo 380ms
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+@keyframes numeroNuevo {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0.55)
+            rotate(-5deg);
+
+        filter:
+            brightness(1.8);
+    }
+
+    65% {
+        opacity: 1;
+
+        transform:
+            scale(1.08)
+            rotate(1deg);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0);
+
+        filter:
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   CONTROL PARA AGREGAR
+   ========================================================= */
+
+.control-numero {
+    width: min(92vw, 450px);
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(135px, 0.9fr);
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 17px;
+}
+
+
+/* =========================================================
+   INPUT RULETA
+   ========================================================= */
+
+.entrada-numero {
+    width: 100%;
+    height: 58px;
+
+    padding:
+        0
+        17px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius: 16px;
+
+    outline: none;
+
+    background:
+        rgba(0, 0, 0, 0.45);
+
+    color: #ffffff;
+
+    text-align: center;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    letter-spacing: 0.08em;
+
+    caret-color: #ff3048;
+
+    box-shadow:
+        inset 0 2px 10px
+        rgba(0, 0, 0, 0.48);
+
+    transition:
+        border-color 220ms ease,
+        box-shadow 220ms ease,
+        background 220ms ease,
+        transform 180ms ease;
+}
+
+
+.entrada-numero::placeholder {
+    color:
+        rgba(255, 255, 255, 0.18);
+}
+
+
+.entrada-numero:focus {
+    border-color:
+        rgba(245, 35, 55, 0.55);
+
+    background:
+        rgba(12, 2, 4, 0.70);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(220, 0, 28, 0.08),
+        0 0 22px
+        rgba(190, 0, 24, 0.09),
+        inset 0 2px 10px
+        rgba(0, 0, 0, 0.42);
+
+    transform:
+        translateY(-1px);
+}
+
+
+.entrada-numero:disabled {
+    opacity: 0.35;
+
+    cursor: default;
+}
+
+
+/* =========================================================
+   BOTON AGREGAR EN IMAGEN
+   ========================================================= */
+
+.boton-agregar {
+    width: 100%;
+    min-width: 0;
+}
+
+
+.boton-agregar img {
+    width: 100%;
+    max-height: 58px;
+
+    object-fit: contain;
+}
+
+
+.boton-agregar:not(:disabled):hover img {
+    transform:
+        scale(1.025);
+
+    filter:
+        drop-shadow(
+            0 7px 16px
+            rgba(0, 0, 0, 0.45)
+        )
+        drop-shadow(
+            0 0 11px
+            rgba(225, 0, 30, 0.20)
+        );
+}
+
+
+.boton-agregar:not(:disabled):active {
+    transform:
+        scale(0.96);
+}
+
+
+/* =========================================================
+   MENSAJE
+   ========================================================= */
+
+.mensaje-inicial {
+    min-height: 18px;
+
+    margin:
+        13px
+        0
+        0;
+
+    color:
+        rgba(255, 255, 255, 0.40);
+
+    text-align: center;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    transition:
+        color 220ms ease,
+        text-shadow 220ms ease;
+}
+
+
+/* =========================================================
+   10/10 COMPLETADO
+   ========================================================= */
+
+.sesion-contenido.lista-completa
+.progreso-inicial {
+    border-color:
+        rgba(65, 235, 145, 0.18);
+
+    box-shadow:
+        0 8px 22px
+        rgba(0, 0, 0, 0.28),
+        0 0 18px
+        rgba(30, 220, 125, 0.07);
+}
+
+
+.sesion-contenido.lista-completa
+#contador-inicial {
+    color:
+        rgba(105, 255, 175, 0.96);
+}
+
+
+.sesion-contenido.lista-completa
+.mensaje-inicial {
+    color:
+        rgba(105, 255, 175, 0.76);
+
+    text-shadow:
+        0 0 13px
+        rgba(45, 230, 135, 0.15);
+}
+
+
+/* =========================================================
+   CONTENEDOR INICIAR SESION
+   ========================================================= */
+
+.contenedor-iniciar-sesion {
+    position: relative;
+
+    width: min(75vw, 315px);
+
+    margin-top: 18px;
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+.contenedor-iniciar-sesion:not([hidden]) {
+    animation:
+        aparecerIniciarSesion 650ms
+        cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+}
+
+
+.boton-iniciar-sesion {
+    width: 100%;
+}
+
+
+.boton-iniciar-sesion img {
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 8px 18px
+            rgba(0, 0, 0, 0.52)
+        );
+}
+
+
+.boton-iniciar-sesion:not(:disabled):hover img {
+    transform:
+        scale(1.025);
+
+    filter:
+        drop-shadow(
+            0 9px 20px
+            rgba(0, 0, 0, 0.55)
+        )
+        drop-shadow(
+            0 0 14px
+            rgba(220, 0, 28, 0.20)
+        );
+}
+
+
+.boton-iniciar-sesion:not(:disabled):active {
+    transform:
+        scale(0.965);
+}
+
+
+@keyframes aparecerIniciarSesion {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(18px)
+            scale(0.90);
+
+        filter:
+            blur(6px);
+    }
+
+    65% {
+        opacity: 1;
+
+        transform:
+            translateY(-2px)
+            scale(1.025);
+
+        filter:
+            blur(0);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   ENTRADA DE LA PANTALLA
+   ========================================================= */
+
+@keyframes sesionNumerosEntrada {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(24px)
+            scale(0.97);
+
+        filter:
+            blur(9px)
+            brightness(0.58);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0)
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   MOVIL ESTRECHO
+   ========================================================= */
+
+@media (max-width: 390px) {
+
+    .historial-numeros {
+        gap: 6px;
+        padding: 11px;
+    }
+
+    .casilla-historial {
+        border-radius: 11px;
+    }
+
+    .control-numero {
+        grid-template-columns:
+            minmax(0, 0.85fr)
+            minmax(120px, 1.15fr);
+
+        gap: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   PANTALLAS BAJAS
+   ========================================================= */
+
+@media (max-height: 700px) {
+
+    .sesion-contenido {
+        padding-top: 8px;
+        padding-bottom: 18px;
+    }
+
+    .titulo-sesion {
+        width: min(72vw, 330px);
+        margin-bottom: 8px;
+    }
+
+    .progreso-inicial {
+        height: 34px;
+        margin-bottom: 11px;
+    }
+
+    .historial-numeros {
+        width: min(86vw, 410px);
+    }
+
+    .control-numero {
+        width: min(86vw, 410px);
+        margin-top: 11px;
+    }
+
+    .entrada-numero {
+        height: 52px;
+    }
+
+    .boton-agregar img {
+        max-height: 52px;
+    }
+
+    .contenedor-iniciar-sesion {
+        margin-top: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET Y ESCRITORIO
+   ========================================================= */
+
+@media (min-width: 700px) {
+
+    .titulo-sesion {
+        width: 420px;
+    }
+
+    .historial-numeros,
+    .control-numero {
+        width: 460px;
+    }
+
+}
+/* =========================================================
+   LA RUCALETA
+   BLOQUE 7
+   SESION ACTIVA + ANALISIS
+   ========================================================= */
+
+
+/* =========================================================
+   PANTALLA
+   ========================================================= */
+
+.pantalla-sesion-activa {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(150, 0, 20, 0.14),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(75, 0, 10, 0.11),
+            transparent 45%
+        );
+}
+
+
+/* =========================================================
+   CONTENIDO GENERAL
+   ========================================================= */
+
+.contenido-sesion-activa {
+    position: relative;
+
+    width: min(100%, 560px);
+
+    margin: auto;
+
+    padding:
+        12px
+        0
+        32px;
+
+    z-index: 5;
+
+    animation:
+        entradaSesionActiva 800ms
+        cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+}
+
+
+/* =========================================================
+   CABECERA
+   ========================================================= */
+
+.cabecera-sesion {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 14px;
+}
+
+
+/* =========================================================
+   SESION ACTIVA
+   ========================================================= */
+
+.estado-superior {
+    min-height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        0
+        14px;
+
+    border-radius: 999px;
+
+    color:
+        rgba(255, 255, 255, 0.68);
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 0.13em;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.035);
+}
+
+
+.estado-superior::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    margin-right: 8px;
+
+    border-radius: 50%;
+
+    background: #d4001c;
+
+    box-shadow:
+        0 0 10px
+        rgba(235, 0, 32, 0.65);
+
+    animation:
+        puntoSesionActiva 2s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes puntoSesionActiva {
+
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: scale(0.85);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+
+}
+
+
+/* =========================================================
+   CONTADOR DE INTENTOS
+   ========================================================= */
+
+.contador-intentos {
+    min-width: 91px;
+    min-height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding:
+        0
+        12px;
+
+    border-radius: 999px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.018)
+        );
+
+    box-shadow:
+        0 7px 18px
+        rgba(0, 0, 0, 0.24);
+
+    transition:
+        border-color 300ms ease,
+        background 300ms ease,
+        box-shadow 300ms ease,
+        transform 300ms ease;
+}
+
+
+.contador-etiqueta {
+    color:
+        rgba(255, 255, 255, 0.38);
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 0.11em;
+}
+
+
+.numero-intento,
+#numero-intento {
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   PANEL DE ESTADO
+   ========================================================= */
+
+.panel-estado {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 142px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        24px
+        20px;
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(23, 23, 26, 0.96),
+            rgba(5, 5, 7, 0.98)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.075);
+
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.56),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.04);
+
+    transition:
+        border-color 400ms ease,
+        box-shadow 400ms ease,
+        background 400ms ease,
+        transform 400ms ease,
+        filter 400ms ease;
+}
+
+
+/* LINEA SUPERIOR */
+
+.panel-estado::before {
+    content: "";
+
+    position: absolute;
+
+    left: 15%;
+    top: 0;
+
+    width: 70%;
+    height: 1px;
+
+    z-index: 4;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 50, 70, 0.50),
+            transparent
+        );
+
+    box-shadow:
+        0 0 16px
+        rgba(225, 0, 30, 0.20);
+}
+
+
+/* =========================================================
+   BRILLO DEL ESTADO
+   ========================================================= */
+
+.brillo-estado {
+    position: absolute;
+
+    width: 75%;
+    height: 170%;
+
+    left: 12.5%;
+    top: -35%;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    opacity: 0.22;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(205, 0, 28, 0.16),
+            transparent 68%
+        );
+
+    filter: blur(20px);
+
+    z-index: -1;
+
+    transition:
+        opacity 400ms ease,
+        transform 500ms ease,
+        background 400ms ease;
+}
+
+
+/* =========================================================
+   CONTENIDO DEL ESTADO
+   ========================================================= */
+
+.panel-estado-contenido {
+    position: relative;
+
+    width: 100%;
+
+    text-align: center;
+
+    z-index: 3;
+}
+
+
+.etiqueta-estado,
+#etiqueta-estado {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color:
+        rgba(255, 255, 255, 0.35);
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 0.17em;
+}
+
+
+.texto-estado,
+#texto-estado {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(25px, 7vw, 36px);
+
+    font-weight: 950;
+
+    line-height: 1;
+
+    letter-spacing: 0.045em;
+
+    text-shadow:
+        0 5px 20px
+        rgba(0, 0, 0, 0.60);
+
+    transition:
+        color 300ms ease,
+        text-shadow 300ms ease,
+        transform 300ms ease;
+}
+
+
+.descripcion-estado,
+#descripcion-estado {
+    margin:
+        10px
+        0
+        0;
+
+    color:
+        rgba(255, 255, 255, 0.42);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    line-height: 1.4;
+
+    letter-spacing: 0.09em;
+}
+
+
+/* =========================================================
+   ULTIMOS GIROS
+   ========================================================= */
+
+.bloque-historial-sesion {
+    width: 100%;
+
+    margin-top: 17px;
+}
+
+
+.titulo-bloque {
+    margin:
+        0
+        0
+        8px
+        4px;
+
+    color:
+        rgba(255, 255, 255, 0.37);
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 0.15em;
+}
+
+
+.historial-sesion {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 8px;
+}
+
+
+.giro-sesion {
+    position: relative;
+
+    aspect-ratio: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+
+    border-radius: 13px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.045),
+            rgba(255, 255, 255, 0.015)
+        );
+
+    color:
+        rgba(255, 255, 255, 0.26);
+
+    font-size:
+        clamp(14px, 4vw, 19px);
+
+    font-weight: 900;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.035),
+        0 6px 15px
+        rgba(0, 0, 0, 0.22);
+
+    transition:
+        transform 220ms ease,
+        background 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
+}
+
+
+/* =========================================================
+   PANEL DE ANALISIS
+   ========================================================= */
+
+.panel-analisis {
+    position: relative;
+
+    width: 100%;
+
+    margin-top: 17px;
+
+    padding:
+        17px;
+
+    border-radius: 23px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 20, 23, 0.95),
+            rgba(6, 6, 8, 0.98)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.45),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.035);
+}
+
+
+.panel-analisis::before {
+    content: "";
+
+    position: absolute;
+
+    left: 12%;
+    top: 0;
+
+    width: 76%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(225, 35, 55, 0.42),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   ENCABEZADO ANALISIS
+   ========================================================= */
+
+.encabezado-analisis {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 13px;
+}
+
+
+.titulo-analisis {
+    color:
+        rgba(255, 255, 255, 0.72);
+
+    font-size: 10px;
+    font-weight: 900;
+
+    letter-spacing: 0.14em;
+}
+
+
+/* =========================================================
+   NIVEL DE SENAL
+   ========================================================= */
+
+.nivel-senal {
+    min-height: 27px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        0
+        10px;
+
+    border-radius: 999px;
+
+    color:
+        rgba(255, 255, 255, 0.40);
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.06);
+
+    font-size: 8px;
+    font-weight: 900;
+
+    letter-spacing: 0.10em;
+
+    transition:
+        color 300ms ease,
+        background 300ms ease,
+        border-color 300ms ease,
+        box-shadow 300ms ease;
+}
+
+
+.nivel-senal.nivel-espera {
+    color:
+        rgba(255, 255, 255, 0.40);
+}
+
+
+.nivel-senal.nivel-condicion {
+    color: #ff8795;
+
+    border-color:
+        rgba(255, 45, 65, 0.20);
+
+    background:
+        rgba(150, 0, 20, 0.09);
+
+    box-shadow:
+        0 0 12px
+        rgba(220, 0, 28, 0.07);
+}
+
+
+.nivel-senal.nivel-entrada {
+    color: #ffffff;
+
+    border-color:
+        rgba(255, 55, 75, 0.32);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(185, 0, 25, 0.25),
+            rgba(95, 0, 12, 0.16)
+        );
+
+    box-shadow:
+        0 0 16px
+        rgba(225, 0, 30, 0.13);
+}
+
+
+/* =========================================================
+   OPCIONES DE ANALISIS
+   ========================================================= */
+
+.opcion-analisis {
+    position: relative;
+
+    width: 100%;
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding:
+        0
+        15px;
+
+    margin-top: 8px;
+
+    border-radius: 15px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.055);
+
+    background:
+        rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 250ms ease,
+        border-color 300ms ease,
+        background 300ms ease,
+        box-shadow 300ms ease;
+}
+
+
+.opcion-analisis::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 24%;
+
+    width: 2px;
+    height: 52%;
+
+    border-radius: 999px;
+
+    opacity: 0.32;
+
+    background:
+        #9e0015;
+
+    transition:
+        height 300ms ease,
+        top 300ms ease,
+        opacity 300ms ease,
+        box-shadow 300ms ease;
+}
+
+
+.nombre-opcion {
+    color:
+        rgba(255, 255, 255, 0.42);
+
+    font-size: 9px;
+    font-weight: 900;
+
+    letter-spacing: 0.12em;
+}
+
+
+.resultado-opcion {
+    color:
+        rgba(255, 255, 255, 0.86);
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 0.07em;
+
+    text-align: right;
+
+    transition:
+        color 300ms ease,
+        text-shadow 300ms ease,
+        transform 300ms ease;
+}
+
+
+/* =========================================================
+   SENAL NIVEL 3
+   ========================================================= */
+
+.opcion-analisis.senal-3 {
+    border-color:
+        rgba(230, 30, 50, 0.15);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(115, 0, 16, 0.08),
+            rgba(0, 0, 0, 0.24)
+        );
+}
+
+
+.opcion-analisis.senal-3::before {
+    opacity: 0.75;
+
+    height: 66%;
+    top: 17%;
+
+    box-shadow:
+        0 0 10px
+        rgba(225, 0, 30, 0.25);
+}
+
+
+.opcion-analisis.senal-3
+.resultado-opcion {
+    color:
+        rgba(255, 175, 185, 0.95);
+}
+
+
+/* =========================================================
+   SENAL NIVEL 5
+   ========================================================= */
+
+.opcion-analisis.senal-5 {
+    transform:
+        translateX(2px);
+
+    border-color:
+        rgba(255, 45, 65, 0.27);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(165, 0, 22, 0.16),
+            rgba(20, 0, 4, 0.24)
+        );
+
+    box-shadow:
+        0 0 18px
+        rgba(210, 0, 28, 0.07);
+}
+
+
+.opcion-analisis.senal-5::before {
+    opacity: 1;
+
+    height: 76%;
+    top: 12%;
+
+    background:
+        #ed1733;
+
+    box-shadow:
+        0 0 13px
+        rgba(240, 20, 50, 0.48);
+}
+
+
+.opcion-analisis.senal-5
+.resultado-opcion {
+    color: #ffffff;
+
+    text-shadow:
+        0 0 13px
+        rgba(245, 25, 50, 0.30);
+
+    transform:
+        scale(1.035);
+}
+
+
+/* =========================================================
+   CONTROL DE NUMERO EN SESION
+   ========================================================= */
+
+.control-sesion {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(140px, 0.9fr);
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-top: 18px;
+}
+
+
+.entrada-numero-sesion {
+    height: 56px;
+}
+
+
+.boton-agregar-sesion {
+    width: 100%;
+}
+
+
+.boton-agregar-sesion img {
+    width: 100%;
+    max-height: 56px;
+
+    object-fit: contain;
+}
+
+
+.boton-agregar-sesion:not(:disabled):hover img {
+    transform:
+        scale(1.025);
+
+    filter:
+        drop-shadow(
+            0 7px 16px
+            rgba(0, 0, 0, 0.45)
+        )
+        drop-shadow(
+            0 0 11px
+            rgba(225, 0, 30, 0.18)
+        );
+}
+
+
+/* =========================================================
+   MENSAJE DE SESION
+   ========================================================= */
+
+.mensaje-sesion {
+    min-height: 17px;
+
+    margin:
+        11px
+        0
+        0;
+
+    color:
+        rgba(255, 255, 255, 0.38);
+
+    text-align: center;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    line-height: 1.4;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   ENTRADA
+   ========================================================= */
+
+@keyframes entradaSesionActiva {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.975);
+
+        filter:
+            blur(9px)
+            brightness(0.55);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0)
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   MOVIL
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .contenido-sesion-activa {
+        padding-top: 7px;
+    }
+
+    .cabecera-sesion {
+        margin-bottom: 11px;
+    }
+
+    .panel-estado {
+        min-height: 130px;
+
+        padding:
+            20px
+            14px;
+    }
+
+    .panel-analisis {
+        padding: 14px;
+    }
+
+    .opcion-analisis {
+        min-height: 54px;
+
+        padding:
+            0
+            12px;
+    }
+
+    .historial-sesion {
+        gap: 6px;
+    }
+
+    .giro-sesion {
+        border-radius: 11px;
+    }
+
+    .control-sesion {
+        grid-template-columns:
+            minmax(0, 0.85fr)
+            minmax(125px, 1.15fr);
+
+        gap: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   PANTALLAS BAJAS
+   ========================================================= */
+
+@media (max-height: 700px) {
+
+    .contenido-sesion-activa {
+        padding-top: 5px;
+        padding-bottom: 20px;
+    }
+
+    .panel-estado {
+        min-height: 115px;
+    }
+
+    .bloque-historial-sesion,
+    .panel-analisis {
+        margin-top: 11px;
+    }
+
+    .opcion-analisis {
+        min-height: 50px;
+    }
+
+    .control-sesion {
+        margin-top: 12px;
+    }
+
+    .entrada-numero-sesion,
+    .boton-agregar-sesion img {
+        height: 50px;
+        max-height: 50px;
+    }
+
+}
+/* =========================================================
+   LA RUCALETA
+   BLOQUE 8
+   ESTADOS + INTENTOS + CONFIRMAR + FUEGO
+   ========================================================= */
+
+
+/* =========================================================
+   CONTENEDOR CONFIRMAR APUESTA
+   ========================================================= */
+
+.contenedor-confirmar-apuesta {
+    position: relative;
+
+    width: 100%;
+
+    margin-top: 16px;
+    padding: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    isolation: isolate;
+
+    transition:
+        transform 300ms ease,
+        filter 300ms ease;
+}
+
+
+/* =========================================================
+   BOTON CONFIRMAR
+   ========================================================= */
+
+.boton-confirmar-apuesta {
+    position: relative;
+
+    width: 100%;
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        0
+        18px;
+
+    border: 0;
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8c0012 0%,
+            #c7001d 48%,
+            #7b000f 100%
+        );
+
+    font-size: 12px;
+    font-weight: 950;
+
+    letter-spacing: 0.12em;
+
+    box-shadow:
+        0 12px 28px
+        rgba(130, 0, 18, 0.30),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.15);
+
+    transition:
+        opacity 250ms ease,
+        transform 180ms ease,
+        filter 250ms ease,
+        box-shadow 250ms ease;
+
+    z-index: 5;
+}
+
+
+.boton-confirmar-apuesta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 38%;
+    height: 230%;
+
+    left: -60%;
+    top: -65%;
+
+    transform:
+        rotate(20deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.22),
+            transparent
+        );
+
+    transition:
+        left 650ms
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.boton-confirmar-apuesta:not(:disabled):hover::before {
+    left: 125%;
+}
+
+
+.boton-confirmar-apuesta:not(:disabled):hover {
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.12);
+
+    box-shadow:
+        0 16px 35px
+        rgba(160, 0, 22, 0.38),
+        0 0 22px
+        rgba(225, 0, 30, 0.13);
+}
+
+
+.boton-confirmar-apuesta:not(:disabled):active {
+    transform:
+        translateY(0)
+        scale(0.975);
+}
+
+
+/* BOTON BLOQUEADO */
+
+.boton-confirmar-apuesta:disabled {
+    cursor: default;
+
+    opacity: 0.24;
+
+    color:
+        rgba(255, 255, 255, 0.50);
+
+    background:
+        linear-gradient(
+            145deg,
+            #27272a,
+            #111113
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.04);
+
+    filter:
+        grayscale(0.65);
+}
+
+
+/* =========================================================
+   ESTADO ESPERAR
+   ========================================================= */
+
+.panel-estado.estado-esperar {
+    border-color:
+        rgba(255, 255, 255, 0.07);
+
+    animation:
+        estadoEsperarRespira 4.2s
+        ease-in-out
+        infinite;
+}
+
+
+.estado-esperar
+.brillo-estado {
+    opacity: 0.13;
+
+    transform:
+        scale(0.88);
+}
+
+
+.estado-esperar
+#texto-estado {
+    color:
+        rgba(255, 255, 255, 0.86);
+}
+
+
+@keyframes estadoEsperarRespira {
+
+    0%,
+    100% {
+        box-shadow:
+            0 25px 60px
+            rgba(0, 0, 0, 0.56),
+            inset 0 1px 0
+            rgba(255, 255, 255, 0.04);
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+        box-shadow:
+            0 27px 64px
+            rgba(0, 0, 0, 0.62),
+            0 0 22px
+            rgba(130, 0, 18, 0.045),
+            inset 0 1px 0
+            rgba(255, 255, 255, 0.045);
+
+        transform:
+            scale(1.003);
+    }
+
+}
+
+
+/* =========================================================
+   CONDICION DETECTADA
+   ========================================================= */
+
+.panel-estado.estado-condicion {
+    border-color:
+        rgba(240, 35, 55, 0.27);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(32, 15, 18, 0.97),
+            rgba(7, 5, 7, 0.98)
+        );
+
+    animation:
+        pulsoCondicion 1.8s
+        ease-in-out
+        infinite;
+}
+
+
+.estado-condicion
+.brillo-estado {
+    opacity: 0.50;
+
+    transform:
+        scale(1.08);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(225, 0, 30, 0.24),
+            transparent 68%
+        );
+}
+
+
+.estado-condicion
+#texto-estado {
+    color: #ffabb5;
+
+    text-shadow:
+        0 0 18px
+        rgba(240, 20, 50, 0.23);
+}
+
+
+@keyframes pulsoCondicion {
+
+    0%,
+    100% {
+        box-shadow:
+            0 25px 60px
+            rgba(0, 0, 0, 0.58),
+            0 0 0
+            rgba(220, 0, 30, 0),
+            inset 0 1px 0
+            rgba(255, 255, 255, 0.04);
+    }
+
+    50% {
+        box-shadow:
+            0 25px 60px
+            rgba(0, 0, 0, 0.58),
+            0 0 28px
+            rgba(220, 0, 30, 0.16),
+            inset 0 1px 0
+            rgba(255, 255, 255, 0.05);
+    }
+
+}
+
+
+/* =========================================================
+   CONSIDERAR ENTRADA
+   ========================================================= */
+
+.panel-estado.estado-entrada {
+    border-color:
+        rgba(255, 45, 65, 0.43);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(45, 10, 15, 0.97),
+            rgba(8, 5, 7, 0.99)
+        );
+
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.58),
+        0 0 30px
+        rgba(220, 0, 30, 0.13),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.055);
+
+    animation:
+        entradaDetectada 900ms
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.estado-entrada
+.brillo-estado {
+    opacity: 0.72;
+
+    transform:
+        scale(1.20);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(245, 10, 40, 0.29),
+            transparent 68%
+        );
+}
+
+
+.estado-entrada
+#texto-estado {
+    color: #ffffff;
+
+    text-shadow:
+        0 0 21px
+        rgba(245, 20, 50, 0.32);
+}
+
+
+@keyframes entradaDetectada {
+
+    0% {
+        transform:
+            scale(0.96);
+
+        filter:
+            brightness(0.72);
+    }
+
+    40% {
+        transform:
+            scale(1.018);
+
+        filter:
+            brightness(1.22);
+    }
+
+    100% {
+        transform:
+            scale(1);
+
+        filter:
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   INTENTO 1
+   ========================================================= */
+
+.panel-estado.estado-intento-1 {
+    border-color:
+        rgba(255, 55, 75, 0.36);
+
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.58),
+        0 0 25px
+        rgba(205, 0, 28, 0.11);
+
+    animation:
+        intentoUnoPulso 2.1s
+        ease-in-out
+        infinite;
+}
+
+
+.estado-intento-1
+.brillo-estado {
+    opacity: 0.58;
+
+    transform:
+        scale(1.10);
+}
+
+
+@keyframes intentoUnoPulso {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.004);
+    }
+
+}
+
+
+/* =========================================================
+   INTENTO 2
+   ========================================================= */
+
+.panel-estado.estado-intento-2 {
+    border-color:
+        rgba(255, 45, 65, 0.52);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(45, 8, 14, 0.98),
+            rgba(7, 4, 6, 0.99)
+        );
+
+    animation:
+        intentoDosPulso 1.25s
+        ease-in-out
+        infinite;
+}
+
+
+.estado-intento-2
+.brillo-estado {
+    opacity: 0.78;
+
+    transform:
+        scale(1.28);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(240, 0, 35, 0.31),
+            transparent 68%
+        );
+}
+
+
+.estado-intento-2
+#texto-estado {
+    text-shadow:
+        0 0 22px
+        rgba(245, 20, 50, 0.30);
+}
+
+
+@keyframes intentoDosPulso {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+        box-shadow:
+            0 25px 60px
+            rgba(0, 0, 0, 0.58),
+            0 0 20px
+            rgba(220, 0, 30, 0.12);
+    }
+
+    50% {
+        transform:
+            scale(1.006);
+
+        box-shadow:
+            0 25px 60px
+            rgba(0, 0, 0, 0.60),
+            0 0 38px
+            rgba(230, 0, 32, 0.22);
+    }
+
+}
+
+
+/* =========================================================
+   ULTIMO INTENTO
+   ========================================================= */
+
+.panel-estado.estado-ultimo {
+    border-color:
+        rgba(255, 65, 80, 0.70);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(60, 7, 14, 0.98),
+            rgba(8, 3, 5, 0.99)
+        );
+
+    animation:
+        ultimoIntentoPulso 780ms
+        ease-in-out
+        infinite;
+}
+
+
+.estado-ultimo
+.brillo-estado {
+    opacity: 1;
+
+    transform:
+        scale(1.45);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255, 0, 38, 0.38),
+            transparent 68%
+        );
+}
+
+
+.estado-ultimo
+#texto-estado {
+    color: #ffffff;
+
+    text-shadow:
+        0 0 12px
+        rgba(255, 255, 255, 0.16),
+        0 0 28px
+        rgba(255, 15, 45, 0.45);
+}
+
+
+@keyframes ultimoIntentoPulso {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+        box-shadow:
+            0 25px 60px
+            rgba(0, 0, 0, 0.60),
+            0 0 25px
+            rgba(230, 0, 32, 0.18);
+    }
+
+    50% {
+        transform:
+            scale(1.009);
+
+        box-shadow:
+            0 25px 60px
+            rgba(0, 0, 0, 0.62),
+            0 0 48px
+            rgba(245, 0, 35, 0.32);
+    }
+
+}
+
+
+/* =========================================================
+   APUESTA GANADA
+   ========================================================= */
+
+.panel-estado.estado-ganada {
+    border-color:
+        rgba(75, 255, 165, 0.55);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 50, 31, 0.97),
+            rgba(3, 12, 8, 0.99)
+        );
+
+    box-shadow:
+        0 25px 60px
+        rgba(0, 0, 0, 0.58),
+        0 0 42px
+        rgba(25, 230, 130, 0.20),
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.07);
+
+    animation:
+        apuestaGanada 900ms
+        cubic-bezier(0.16, 1, 0.3, 1)
+        both;
+}
+
+
+.estado-ganada
+.brillo-estado {
+    opacity: 1;
+
+    transform:
+        scale(1.45);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(35, 255, 145, 0.32),
+            transparent 68%
+        );
+}
+
+
+.estado-ganada
+#texto-estado {
+    color: #8dffc2;
+
+    text-shadow:
+        0 0 24px
+        rgba(40, 255, 145, 0.42);
+}
+
+
+@keyframes apuestaGanada {
+
+    0% {
+        transform: scale(0.97);
+
+        filter:
+            brightness(0.8);
+    }
+
+    25% {
+        transform:
+            scale(1.025);
+
+        filter:
+            brightness(1.45);
+    }
+
+    55% {
+        transform:
+            scale(0.995);
+
+        filter:
+            brightness(1.08);
+    }
+
+    100% {
+        transform:
+            scale(1);
+
+        filter:
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   CERRAR SECUENCIA
+   ========================================================= */
+
+.panel-estado.estado-cierre {
+    animation:
+        cerrarEstado 1.1s
+        ease
+        both;
+}
+
+
+@keyframes cerrarEstado {
+
+    0% {
+        opacity: 1;
+
+        filter:
+            brightness(1.1);
+    }
+
+    45% {
+        opacity: 0.72;
+
+        filter:
+            brightness(0.72);
+    }
+
+    100% {
+        opacity: 1;
+
+        filter:
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   CONTADOR - INTENTO 0
+   ========================================================= */
+
+.contador-intentos.intento-0 {
+    border-color:
+        rgba(255, 255, 255, 0.07);
+}
+
+
+/* =========================================================
+   CONTADOR - INTENTO 1
+   ========================================================= */
+
+.contador-intentos.intento-1 {
+    border-color:
+        rgba(255, 60, 80, 0.24);
+
+    background:
+        rgba(120, 0, 17, 0.10);
+
+    box-shadow:
+        0 0 14px
+        rgba(220, 0, 30, 0.08);
+}
+
+
+/* =========================================================
+   CONTADOR - INTENTO 2
+   ========================================================= */
+
+.contador-intentos.intento-2 {
+    border-color:
+        rgba(255, 55, 75, 0.40);
+
+    background:
+        rgba(155, 0, 21, 0.15);
+
+    box-shadow:
+        0 0 19px
+        rgba(230, 0, 32, 0.14);
+
+    transform:
+        scale(1.025);
+}
+
+
+/* =========================================================
+   CONTADOR - INTENTO 3
+   ========================================================= */
+
+.contador-intentos.intento-3 {
+    border-color:
+        rgba(255, 65, 80, 0.62);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(185, 0, 25, 0.26),
+            rgba(95, 0, 13, 0.18)
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(240, 0, 35, 0.22);
+
+    transform:
+        scale(1.055);
+
+    animation:
+        contadorUltimoIntento 700ms
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes contadorUltimoIntento {
+
+    0%,
+    100% {
+        filter:
+            brightness(1);
+    }
+
+    50% {
+        filter:
+            brightness(1.30);
+    }
+
+}
+
+
+/* =========================================================
+   FUEGO
+   ========================================================= */
+
+.efecto-fuego {
+    position: absolute;
+
+    left: 4%;
+    right: 4%;
+    bottom: 2px;
+
+    height: 78px;
+
+    overflow: visible;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    z-index: 1;
+
+    filter:
+        blur(0.2px);
+
+    transition:
+        opacity 350ms ease,
+        transform 350ms ease,
+        filter 350ms ease;
+}
+
+
+/* =========================================================
+   LLAMAS
+   ========================================================= */
+
+.llama {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 10%;
+    height: 48px;
+
+    border-radius:
+        50%
+        50%
+        38%
+        38%;
+
+    opacity: 0;
+
+    transform-origin:
+        50%
+        100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 125, 40, 0.05) 0%,
+            rgba(255, 35, 40, 0.60) 35%,
+            rgba(180, 0, 25, 0.72) 68%,
+            rgba(75, 0, 12, 0.12) 100%
+        );
+
+    filter:
+        blur(2px);
+
+    animation:
+        moverLlama 950ms
+        ease-in-out
+        infinite alternate;
+}
+
+
+.llama::after {
+    content: "";
+
+    position: absolute;
+
+    width: 48%;
+    height: 58%;
+
+    left: 26%;
+    bottom: 5%;
+
+    border-radius:
+        50%
+        50%
+        40%
+        40%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 220, 150, 0.38),
+            rgba(255, 70, 45, 0.40),
+            transparent
+        );
+
+    filter:
+        blur(1px);
+}
+
+
+/* POSICIONES */
+
+.llama-1 {
+    left: 0%;
+    animation-delay: -0.15s;
+}
+
+.llama-2 {
+    left: 8%;
+    animation-delay: -0.55s;
+}
+
+.llama-3 {
+    left: 16%;
+    animation-delay: -0.28s;
+}
+
+.llama-4 {
+    left: 24%;
+    animation-delay: -0.72s;
+}
+
+.llama-5 {
+    left: 32%;
+    animation-delay: -0.35s;
+}
+
+.llama-6 {
+    left: 40%;
+    animation-delay: -0.82s;
+}
+
+.llama-7 {
+    left: 48%;
+    animation-delay: -0.22s;
+}
+
+.llama-8 {
+    left: 56%;
+    animation-delay: -0.65s;
+}
+
+.llama-9 {
+    left: 64%;
+    animation-delay: -0.42s;
+}
+
+.llama-10 {
+    left: 72%;
+    animation-delay: -0.78s;
+}
+
+.llama-11 {
+    left: 80%;
+    animation-delay: -0.31s;
+}
+
+.llama-12 {
+    left: 88%;
+    animation-delay: -0.60s;
+}
+
+
+@keyframes moverLlama {
+
+    0% {
+        transform:
+            translateY(4px)
+            scaleX(0.78)
+            scaleY(0.82)
+            rotate(-3deg);
+
+        border-radius:
+            50%
+            45%
+            42%
+            38%;
+    }
+
+    50% {
+        transform:
+            translateY(-7px)
+            scaleX(1.02)
+            scaleY(1.18)
+            rotate(2deg);
+    }
+
+    100% {
+        transform:
+            translateY(-13px)
+            scaleX(0.86)
+            scaleY(1.38)
+            rotate(5deg);
+
+        border-radius:
+            45%
+            55%
+            35%
+            45%;
+    }
+
+}
+
+
+/* =========================================================
+   FUEGO 0
+   ========================================================= */
+
+.contenedor-confirmar-apuesta.fuego-0
+.efecto-fuego {
+    opacity: 0;
+
+    transform:
+        translateY(12px)
+        scaleY(0.65);
+}
+
+
+/* =========================================================
+   FUEGO 1
+   ========================================================= */
+
+.contenedor-confirmar-apuesta.fuego-1
+.efecto-fuego {
+    opacity: 0.42;
+
+    transform:
+        translateY(6px)
+        scaleY(0.72);
+}
+
+
+.contenedor-confirmar-apuesta.fuego-1
+.llama {
+    opacity: 0.34;
+
+    height: 36px;
+}
+
+
+/* =========================================================
+   FUEGO 2
+   ========================================================= */
+
+.contenedor-confirmar-apuesta.fuego-2
+.efecto-fuego {
+    opacity: 0.72;
+
+    transform:
+        translateY(2px)
+        scaleY(0.92);
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(225, 0, 30, 0.22)
+        );
+}
+
+
+.contenedor-confirmar-apuesta.fuego-2
+.llama {
+    opacity: 0.62;
+
+    height: 51px;
+}
+
+
+/* =========================================================
+   FUEGO 3
+   ========================================================= */
+
+.contenedor-confirmar-apuesta.fuego-3
+.efecto-fuego {
+    opacity: 1;
+
+    transform:
+        translateY(-2px)
+        scaleY(1.12);
+
+    filter:
+        drop-shadow(
+            0 0 14px
+            rgba(240, 0, 35, 0.34)
+        );
+}
+
+
+.contenedor-confirmar-apuesta.fuego-3
+.llama {
+    opacity: 0.88;
+
+    height: 65px;
+
+    animation-duration:
+        620ms;
+}
+
+
+/* =========================================================
+   INTENSIDAD DEL BOTON SEGUN INTENTO
+   ========================================================= */
+
+.contenedor-confirmar-apuesta.fuego-1
+.boton-confirmar-apuesta:not(:disabled) {
+    box-shadow:
+        0 12px 30px
+        rgba(145, 0, 20, 0.34),
+        0 0 16px
+        rgba(215, 0, 28, 0.10);
+}
+
+
+.contenedor-confirmar-apuesta.fuego-2
+.boton-confirmar-apuesta:not(:disabled) {
+    filter:
+        brightness(1.06);
+
+    box-shadow:
+        0 14px 34px
+        rgba(165, 0, 22, 0.40),
+        0 0 24px
+        rgba(230, 0, 32, 0.17);
+}
+
+
+.contenedor-confirmar-apuesta.fuego-3
+.boton-confirmar-apuesta:not(:disabled) {
+    filter:
+        brightness(1.14);
+
+    box-shadow:
+        0 15px 38px
+        rgba(185, 0, 25, 0.46),
+        0 0 32px
+        rgba(245, 0, 35, 0.25);
+
+    animation:
+        botonUltimoIntento 720ms
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes botonUltimoIntento {
+
+    0%,
+    100% {
+        transform:
+            scale(1);
+    }
+
+    50% {
+        transform:
+            scale(1.012);
+    }
+
+}
+
+
+/* =========================================================
+   IMPACTO
+   ELEMENTO GENERADO POR JAVA
+   ========================================================= */
+
+.impacto {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    width: 60px;
+    height: 60px;
+
+    margin:
+        -30px
+        0
+        0
+        -30px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 9500;
+
+    border:
+        2px solid
+        rgba(255, 50, 70, 0.75);
+
+    box-shadow:
+        0 0 25px
+        rgba(245, 0, 35, 0.35);
+
+    animation:
+        impactoExpansion 650ms
+        ease-out
+        forwards;
+}
+
+
+@keyframes impactoExpansion {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            scale(0.25);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            scale(8);
+    }
+
+}
+
+
+/* =========================================================
+   AJUSTE MOVIL
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .contenedor-confirmar-apuesta {
+        margin-top: 13px;
+        padding: 6px;
+    }
+
+    .boton-confirmar-apuesta {
+        min-height: 54px;
+
+        font-size: 11px;
+    }
+
+    .efecto-fuego {
+        height: 68px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCIR EFECTOS EN PANTALLAS BAJAS
+   ========================================================= */
+
+@media (max-height: 650px) {
+
+    .efecto-fuego {
+        height: 55px;
+    }
+
+    .contenedor-confirmar-apuesta.fuego-3
+    .llama {
+        height: 52px;
+    }
+
+}
+/* =========================================================
+   LA RUCALETA
+   BLOQUE 9 FINAL
+   PARTICULAS + FLASHES + AJUSTES RESPONSIVE
+   ========================================================= */
+
+
+/* =========================================================
+   PARTICULAS GENERALES
+   ========================================================= */
+
+.particula {
+    position: absolute;
+
+    left: var(--x, 50%);
+    bottom: -20px;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    background:
+        rgba(255, 45, 65, 0.95);
+
+    box-shadow:
+        0 0 9px
+        rgba(255, 25, 50, 0.55);
+
+    animation:
+        particulaSube
+        var(--duracion, 1.2s)
+        ease-out
+        var(--delay, 0s)
+        forwards;
+}
+
+
+@keyframes particulaSube {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate3d(0, 15px, 0)
+            scale(0.4);
+    }
+
+    18% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0.82;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate3d(
+                0,
+                -85vh,
+                0
+            )
+            scale(0.15);
+    }
+
+}
+
+
+/* =========================================================
+   PARTICULAS DE ACCESO
+   ========================================================= */
+
+.particula-acceso {
+    background:
+        rgba(255, 55, 75, 0.96);
+
+    box-shadow:
+        0 0 8px
+        rgba(255, 30, 55, 0.70),
+        0 0 20px
+        rgba(190, 0, 25, 0.32);
+}
+
+
+.particula-acceso:nth-child(3n) {
+    width: 3px;
+    height: 3px;
+
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    box-shadow:
+        0 0 8px
+        rgba(255, 255, 255, 0.45);
+}
+
+
+.particula-acceso:nth-child(4n) {
+    width: 7px;
+    height: 7px;
+
+    filter:
+        blur(0.5px);
+}
+
+
+/* =========================================================
+   PARTICULAS DE VICTORIA
+   ========================================================= */
+
+.particula-ganada {
+    width: 6px;
+    height: 6px;
+
+    background:
+        rgba(65, 255, 155, 0.96);
+
+    box-shadow:
+        0 0 9px
+        rgba(45, 255, 145, 0.70),
+        0 0 22px
+        rgba(25, 200, 115, 0.34);
+}
+
+
+.particula-ganada:nth-child(2n) {
+    width: 4px;
+    height: 4px;
+
+    background:
+        rgba(225, 255, 240, 0.96);
+}
+
+
+.particula-ganada:nth-child(5n) {
+    width: 8px;
+    height: 8px;
+
+    filter:
+        blur(0.7px);
+}
+
+
+/* =========================================================
+   FLASH GENERAL
+   ========================================================= */
+
+.flash-pantalla {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    pointer-events: none;
+
+    z-index: 9400;
+
+    opacity: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 255, 255, 0.62),
+            rgba(255, 40, 65, 0.25) 18%,
+            transparent 62%
+        );
+
+    animation:
+        flashGeneral 650ms
+        ease-out
+        forwards;
+}
+
+
+@keyframes flashGeneral {
+
+    0% {
+        opacity: 0;
+    }
+
+    18% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   FLASH DE VICTORIA
+   ========================================================= */
+
+.flash-ganada {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    pointer-events: none;
+
+    z-index: 9450;
+
+    opacity: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(235, 255, 245, 0.72),
+            rgba(50, 255, 155, 0.30) 17%,
+            rgba(5, 90, 50, 0.12) 38%,
+            transparent 68%
+        );
+
+    animation:
+        flashGanada 850ms
+        ease-out
+        forwards;
+}
+
+
+@keyframes flashGanada {
+
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    18% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    48% {
+        opacity: 0.35;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.15);
+    }
+
+}
+
+
+/* =========================================================
+   ONDA DE ACCESO
+   ========================================================= */
+
+.onda-acceso {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    width: 80px;
+    height: 80px;
+
+    margin:
+        -40px
+        0
+        0
+        -40px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 9300;
+
+    border:
+        2px solid
+        rgba(255, 55, 75, 0.72);
+
+    box-shadow:
+        0 0 20px
+        rgba(235, 0, 32, 0.28),
+        inset 0 0 15px
+        rgba(235, 0, 32, 0.12);
+
+    animation:
+        ondaAcceso 850ms
+        cubic-bezier(0.16, 1, 0.3, 1)
+        forwards;
+}
+
+
+@keyframes ondaAcceso {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            scale(0.15);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            scale(12);
+    }
+
+}
+
+
+/* =========================================================
+   ONDA DE VICTORIA
+   ========================================================= */
+
+.onda-ganada {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    width: 80px;
+    height: 80px;
+
+    margin:
+        -40px
+        0
+        0
+        -40px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 9350;
+
+    border:
+        2px solid
+        rgba(75, 255, 165, 0.80);
+
+    box-shadow:
+        0 0 24px
+        rgba(45, 255, 145, 0.32);
+
+    animation:
+        ondaGanada 1s
+        cubic-bezier(0.16, 1, 0.3, 1)
+        forwards;
+}
+
+
+@keyframes ondaGanada {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            scale(0.15);
+    }
+
+    60% {
+        opacity: 0.45;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            scale(14);
+    }
+
+}
+
+
+/* =========================================================
+   NUEVO GIRO EN SESION
+   ========================================================= */
+
+.giro-sesion.giro-nuevo {
+    animation:
+        giroNuevo 430ms
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+@keyframes giroNuevo {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(-8px)
+            scale(0.65);
+
+        filter:
+            brightness(1.7);
+    }
+
+    65% {
+        opacity: 1;
+
+        transform:
+            translateY(1px)
+            scale(1.08);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            brightness(1);
+    }
+
+}
+
+
+/* =========================================================
+   CAMBIO DE RESULTADO EN ANALISIS
+   ========================================================= */
+
+.resultado-opcion.resultado-cambio {
+    animation:
+        resultadoCambio 420ms
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+@keyframes resultadoCambio {
+
+    0% {
+        opacity: 0.35;
+
+        transform:
+            translateX(7px)
+            scale(0.92);
+    }
+
+    55% {
+        opacity: 1;
+
+        transform:
+            translateX(-1px)
+            scale(1.06);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateX(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   CAMBIO DEL ESTADO PRINCIPAL
+   ========================================================= */
+
+.texto-estado.estado-cambiando {
+    animation:
+        textoEstadoCambio 480ms
+        cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+@keyframes textoEstadoCambio {
+
+    0% {
+        opacity: 0.35;
+
+        transform:
+            translateY(7px)
+            scale(0.95);
+
+        filter:
+            blur(3px);
+    }
+
+    65% {
+        opacity: 1;
+
+        transform:
+            translateY(-1px)
+            scale(1.035);
+
+        filter:
+            blur(0);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   BLOQUEO TEMPORAL DE NAVEGACION
+   ========================================================= */
+
+body.navegacion-bloqueada {
+    overflow: hidden;
+}
+
+
+body.navegacion-bloqueada
+button {
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SUAVIZADO DE INPUT EN IOS
+   ========================================================= */
+
+input {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   EVITAR ZOOM Y DESBORDES EXTRAÑOS
+   ========================================================= */
+
+.pantalla,
+.login-panel,
+.instrucciones-panel,
+.historial-numeros,
+.panel-estado,
+.panel-analisis {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   AJUSTES IPHONE PEQUENO
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .pantalla {
+        padding-left:
+            max(
+                12px,
+                env(safe-area-inset-left)
+            );
+
+        padding-right:
+            max(
+                12px,
+                env(safe-area-inset-right)
+            );
+    }
+
+    .login-panel,
+    .instrucciones-panel {
+        border-radius: 21px;
+    }
+
+    .panel-estado,
+    .panel-analisis {
+        border-radius: 20px;
+    }
+
+    .texto-estado,
+    #texto-estado {
+        font-size: 24px;
+    }
+
+    .control-numero,
+    .control-sesion {
+        gap: 7px;
+    }
+
+}
+
+
+/* =========================================================
+   AJUSTES IPAD
+   ========================================================= */
+
+@media (
+    min-width: 700px
+) and (
+    max-width: 1100px
+) {
+
+    .pantalla {
+        padding-top:
+            max(
+                30px,
+                env(safe-area-inset-top)
+            );
+
+        padding-bottom:
+            max(
+                35px,
+                env(safe-area-inset-bottom)
+            );
+    }
+
+    .contenido-sesion-activa {
+        width: min(100%, 600px);
+    }
+
+    .panel-estado {
+        min-height: 155px;
+    }
+
+    .historial-sesion {
+        gap: 10px;
+    }
+
+    .opcion-analisis {
+        min-height: 61px;
+    }
+
+}
+
+
+/* =========================================================
+   ESCRITORIO
+   ========================================================= */
+
+@media (min-width: 1100px) {
+
+    .contenido-sesion-activa {
+        width: 600px;
+    }
+
+    .panel-estado {
+        min-height: 160px;
+    }
+
+    .pantalla {
+        padding-top: 35px;
+        padding-bottom: 40px;
+    }
+
+}
+
+
+/* =========================================================
+   ORIENTACION HORIZONTAL
+   ========================================================= */
+
+@media (
+    orientation: landscape
+) and (
+    max-height: 600px
+) {
+
+    .pantalla {
+        min-height: 100dvh;
+
+        padding-top:
+            max(
+                12px,
+                env(safe-area-inset-top)
+            );
+
+        padding-bottom:
+            max(
+                14px,
+                env(safe-area-inset-bottom)
+            );
+    }
+
+    .inicio-contenido,
+    .login-contenido,
+    .instrucciones-contenido,
+    .sesion-contenido,
+    .contenido-sesion-activa {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+}
+
+
+/* =========================================================
+   DISPOSITIVOS SIN HOVER
+   ========================================================= */
+
+@media (hover: none) {
+
+    .boton-login:hover,
+    .boton-continuar-instrucciones:hover,
+    .boton-confirmar-apuesta:hover,
+    .casilla-historial:hover,
+    .opcion-analisis:hover {
+        transform: none;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCIR MOVIMIENTO SI EL SISTEMA LO PIDE
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+
+}
+
+
+/* =========================================================
+   FIN DEL STYLE.CSS
+   ========================================================= */
